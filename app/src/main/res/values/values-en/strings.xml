@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoMobiles</string>
+    <string name="telefonos">Phone</string>
+    <string name="noticias">News</string>
+    <string name="sugerencias">Suggestions</string>
+    <string name="URL">UQ Page</string>
+    <string name="es_us">change language</string>
+</resources>

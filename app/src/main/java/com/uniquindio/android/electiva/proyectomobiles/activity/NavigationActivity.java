@@ -1,26 +1,33 @@
 package com.uniquindio.android.electiva.proyectomobiles.activity;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
 
 public class NavigationActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navView;
 
+
     private void remplazarFragmento(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(null).commit();
+    }
+    public void URLiniciar(){
+        Intent Urlini=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uniquindio.edu.co/"));
+        startActivity(Urlini);
     }
 
     @Override
@@ -42,16 +49,16 @@ public class NavigationActivity extends AppCompatActivity {
                         remplazarFragmento(new NoticiasFragment());
                         break;
                     case R.id.telefonos:
-                        Log.i("NavigationView", "Pulsada seccion 2");
+                        remplazarFragmento(new TelefonosFragment());
                         break;
                     case R.id.sugerencias:
                         remplazarFragmento(new SugerenciasFragment());
                         break;
                     case R.id.pagina:
-                        Log.i("NavigationView", "Pulsada opción 1");
+                       URLiniciar();
                         break;
                     case R.id.idioma:
-                        Log.i("NavigationView", "Pulsada opción 2");
+
                         break;
                 }
                 item.setChecked(true);
@@ -70,4 +77,6 @@ public class NavigationActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

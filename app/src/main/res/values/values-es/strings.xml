@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ProyectoMobiles</string>
     <string name="telefonos">Telefonos</string>
@@ -5,7 +6,4 @@
     <string name="sugerencias">Sugerencias</string>
     <string name="URL">Pagina UQ</string>
     <string name="es_us">Cambio de Idioma</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-
 </resources>
