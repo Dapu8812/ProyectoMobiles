@@ -5,6 +5,12 @@
     <string name="sugerencias">Sugerencias</string>
     <string name="URL">Pagina UQ</string>
     <string name="es_us">Cambio de Idioma</string>
+    <string name="imagen_detalle_noticia">descripcion imagen noticia </string>
+    <string name="descripcion_detalle_noticia">En el día de la tierra el programa institucional de ingeniería, Máquina de Ingenio, profundiza con expertos de diferentes campos del conocimiento adscritos a esta facultad, sobre los aspectos geocientíficos de la actividad sísmica reciente en Japón y Ecuador y su relación con las amenazas que subyacen al cinturón de fuego del pacífico, el diseño de estructuras sismoresistentes, el comportamiento tectónico en Colombia y el problema de la no actualización de la microzonificación sísmica de Armenia, entre otros temas.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

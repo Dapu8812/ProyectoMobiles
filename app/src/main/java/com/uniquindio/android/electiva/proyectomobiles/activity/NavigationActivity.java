@@ -25,8 +25,9 @@ public class NavigationActivity extends AppCompatActivity {
     private void remplazarFragmento(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(null).commit();
     }
-    public void URLiniciar(){
-        Intent Urlini=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uniquindio.edu.co/"));
+
+    public void URLiniciar() {
+        Intent Urlini = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uniquindio.edu.co/"));
         startActivity(Urlini);
     }
 
@@ -55,10 +56,10 @@ public class NavigationActivity extends AppCompatActivity {
                         remplazarFragmento(new SugerenciasFragment());
                         break;
                     case R.id.pagina:
-                       URLiniciar();
+                        URLiniciar();
                         break;
                     case R.id.idioma:
-
+                       //
                         break;
                 }
                 item.setChecked(true);
