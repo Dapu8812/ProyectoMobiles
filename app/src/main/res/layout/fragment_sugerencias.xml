@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/titulosugerencias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|top"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
+        android:autoText="false"
+        android:background="#bbbbbb"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="REPORTAR SUGERENCIA"
+        android:textAlignment="center"
+        android:textColor="#159029"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|left|top"
+        android:layout_marginBottom="80dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/logouqtras"
+        android:inputType="textMultiLine"
+        android:nestedScrollingEnabled="true"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/buttonsugerencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.06"
+        android:background="@color/colorPrimaryDark"
+        android:padding="15dp"
+        android:drawablePadding="5dp"
+        android:text="ENVIAR"
+        android:textSize="25dp"
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProyectoMobiles</string>
+    <string name="telefonos">Telefonos</string>
+    <string name="noticias">Noticias</string>
+    <string name="sugerencias">Sugerencias</string>
+    <string name="URL">Pagina UQ</string>
+    <string name="es_us">Cambio de Idioma</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
