@@ -15,11 +15,18 @@ import com.uniquindio.android.electiva.proyectomobiles.R;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
+import com.uniquindio.android.electiva.proyectomobiles.util.Utilidades;
+import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
+
+import java.util.ArrayList;
 
 public class NavigationActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navView;
+    private ArrayList<Noticia> noticia;
+    private NoticiasFragment listaNoticias;
+
 
 
     private void remplazarFragmento(Fragment fragment) {
@@ -34,13 +41,19 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Utilidades.obtenerLenguaje(this);
+
         setContentView(R.layout.activity_navigation);
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navView = (NavigationView) findViewById(R.id.navview);
         navView.setItemIconTintList(null);
+
         remplazarFragmento(new NoticiasFragment());
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -59,7 +72,10 @@ public class NavigationActivity extends AppCompatActivity {
                         URLiniciar();
                         break;
                     case R.id.idioma:
-                       //
+                        Utilidades.cambiarIdioma(NavigationActivity.this);
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
                         break;
                 }
                 item.setChecked(true);
