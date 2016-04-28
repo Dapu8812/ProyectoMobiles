@@ -6,9 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
@@ -34,13 +36,20 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     DrawerLayout drawerLayout;
     NavigationView navView;
-    private ArrayList<Noticia> noticia;
-    private NoticiasFragment listaNoticias;
+    private ArrayList<Noticia> noticias;
+  //  private NoticiasFragment listaNoticias;
 
 
 
-    private void remplazarFragmento(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(null).commit();
+    private void remplazarFragmento(Fragment fragment , int t) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, fragment);
+
+        if(t == 0)
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 
     public void URLiniciar() {
@@ -54,11 +63,13 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         Utilidades.obtenerLenguaje(this);
 
-        noticia = new ArrayList<>();
-        noticia.add(new Noticia("noticia 1"));
-        noticia.add(new Noticia("noticia 2"));
-      //  listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
-        listaNoticias.setPeliculas(noticia);
+        noticias = new ArrayList<>();
+        noticias.add(new Noticia("noticia 1"));
+        noticias.add(new Noticia("noticia 2"));
+        noticias.add(new Noticia("noticia 3"));
+        noticias.add(new Noticia("noticia 4"));
+        //listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
+        //listaNoticias.setPeliculas(noticias);
 
         setContentView(R.layout.activity_navigation);
 
@@ -70,19 +81,25 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         navView = (NavigationView) findViewById(R.id.navview);
         navView.setItemIconTintList(null);
 
-        remplazarFragmento(new NoticiasFragment());
+        final NoticiasFragment noticiasFragment = new NoticiasFragment();
+        noticiasFragment.setNoticias(noticias);
+
+        Log.v(NavigationActivity.class.getSimpleName(), ""+noticias);
+
+        //remplazarFragmento(noticiasFragment, 1);
+
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.noticias:
-                        remplazarFragmento(new NoticiasFragment());
+                        remplazarFragmento(noticiasFragment, 0);
                         break;
                     case R.id.telefonos:
-                        remplazarFragmento(new TelefonosFragment());
+                        remplazarFragmento(new TelefonosFragment(),0);
                         break;
                     case R.id.sugerencias:
-                        remplazarFragmento(new SugerenciasFragment());
+                        remplazarFragmento(new SugerenciasFragment(),0);
                         break;
                     case R.id.pagina:
                         URLiniciar();
@@ -118,11 +135,11 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
         if (esFragmento) {
             ((DetalleNoticiaFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticia.get(position));
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position));
         } else {
             Intent intent = new Intent(NavigationActivity.this,
                     DetalleDeNoticiasActivity.class);
-            intent.putExtra("Noticia", noticia.get(position));
+            intent.putExtra("Noticia", noticias.get(position));
             startActivity(intent);
         }
     }

@@ -1,6 +1,7 @@
 package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.NoticiaViewHolder> {
 
     ArrayList<Noticia> noticias;
+
     private static OnClickAdaptadorNoticia listener;
 
     public AdaptadorNoticia(ArrayList<Noticia> noticias, NoticiasFragment noticiasFragment) {
@@ -56,7 +58,8 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
     }
 
 
-    public static class NoticiaViewHolder extends RecyclerView.ViewHolder {
+    public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private TextView titulo;
         private TextView descripcion;
 
@@ -64,15 +67,23 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
             super(itemView);
             titulo = (TextView) itemView.findViewById(R.id.titulo_noticia);
             descripcion = (TextView) itemView.findViewById(R.id.descripcion_noticia);
+            Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
         }
 
         public void binNoticia(Noticia noticia) {
             titulo.setText(noticia.getTitulo());
             descripcion.setText(noticia.getDescripcion());
         }
+
+        @Override
+        public void onClick(View v) {
+            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
+        }
+
+/*        @Override
         public void onClick(View v) {
             listener.onClickPosition(getAdapterPosition());
-            // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. " + txtTitulo.getText());
-        }
+            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
+        }*/
     }
 }

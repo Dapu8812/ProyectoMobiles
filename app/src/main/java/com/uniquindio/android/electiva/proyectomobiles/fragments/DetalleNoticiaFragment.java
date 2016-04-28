@@ -39,6 +39,8 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         this.noticia = n;
         titulo = (TextView) getView().findViewById(R.id.titulo_detalle_noticia);
         titulo.setText(n.getTitulo());
+
+
     }
 
     @Override

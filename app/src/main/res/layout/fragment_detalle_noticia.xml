@@ -45,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imagen_detalle_noticia"
                 android:src="@drawable/imagennav"
-                android:layout_weight="2"
                 android:layout_gravity="center"
                 android:focusableInTouchMode="false" />
 
