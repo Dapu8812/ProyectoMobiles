@@ -2,7 +2,6 @@ package com.uniquindio.android.electiva.proyectomobiles.vo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
 /**
  * Created by DAA on 26/04/2016.
@@ -11,12 +10,9 @@ public class Noticia implements Parcelable{
 
     private String titulo;
     private String descripcion;
-    private ImageView imagennoticia;
 
-    public Noticia(String titulo, String descripcion, ImageView imagennoticia) {
+    public Noticia(String titulo) {
         this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.imagennoticia = imagennoticia;
     }
 protected Noticia(Parcel in){
     titulo = in.readString();
@@ -53,13 +49,6 @@ protected Noticia(Parcel in){
         }
     };
 
-    public ImageView getImagennoticia() {
-        return imagennoticia;
-    }
-
-    public void setImagennoticia(ImageView imagennoticia) {
-        this.imagennoticia = imagennoticia;
-    }
 
 
     @Override

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleNoticiaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
@@ -20,7 +21,7 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 import java.util.ArrayList;
 
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener{
 
     DrawerLayout drawerLayout;
     NavigationView navView;
@@ -43,6 +44,12 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Utilidades.obtenerLenguaje(this);
+
+        noticia = new ArrayList<>();
+        noticia.add(new Noticia("noticia 1"));
+        noticia.add(new Noticia("noticia 2"));
+        listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
+        listaNoticias.setPeliculas(noticia);
 
         setContentView(R.layout.activity_navigation);
 
@@ -96,4 +103,18 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onNoticiaSeleccionada(int position) {
+        boolean esFragmento =
+                getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
+        if (esFragmento) {
+            ((DetalleNoticiaFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticia.get(position));
+        } else {
+            Intent intent = new Intent(NavigationActivity.this,
+                    DetalleDeNoticiasActivity.class);
+            intent.putExtra("Noticia", noticia.get(position));
+            startActivity(intent);
+        }
+    }
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 import java.util.ArrayList;
@@ -17,6 +18,13 @@ import java.util.ArrayList;
 public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.NoticiaViewHolder> {
 
     ArrayList<Noticia> noticias;
+    private static OnClickAdaptadorNoticia listener;
+
+    public AdaptadorNoticia(ArrayList<Noticia> noticias, NoticiasFragment noticiasFragment) {
+        this.noticias = noticias;
+        listener = (OnClickAdaptadorNoticia) noticiasFragment;
+    }
+
 
     @Override
     public NoticiaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -56,6 +64,10 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         public void binNoticia(Noticia noticia) {
             titulo.setText(noticia.getTitulo());
             descripcion.setText(noticia.getDescripcion());
+        }
+        public void onClick(View v) {
+            listener.onClickPosition(getAdapterPosition());
+            // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. " + txtTitulo.getText());
         }
     }
 }
