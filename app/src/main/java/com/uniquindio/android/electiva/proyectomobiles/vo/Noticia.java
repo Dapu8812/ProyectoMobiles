@@ -4,7 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by DAA on 26/04/2016.
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
  */
 public class Noticia implements Parcelable{
 

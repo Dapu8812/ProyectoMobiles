@@ -5,7 +5,15 @@
     android:orientation="vertical"
     tools:context="com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleNoticiaFragment">
 
-
+    <!--/**
+     * Proyecto final Moviles Uniquindio
+     *
+     * @author Daniel Alvarado Arias
+     * @author Leydi Giraldo Franco
+     * @author Juan Diego Buitrago
+     * 28 de Abril de 2016
+     */
+    -->
 
     <ScrollView
         android:id="@+id/scrollView"

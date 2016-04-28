@@ -21,7 +21,16 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 import java.util.ArrayList;
 
+
 public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener{
+/**
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
+ */
 
     DrawerLayout drawerLayout;
     NavigationView navView;
@@ -48,7 +57,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticia = new ArrayList<>();
         noticia.add(new Noticia("noticia 1"));
         noticia.add(new Noticia("noticia 2"));
-        listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
+      //  listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
         listaNoticias.setPeliculas(noticia);
 
         setContentView(R.layout.activity_navigation);

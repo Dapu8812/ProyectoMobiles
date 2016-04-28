@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/**
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
+ */
+-->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
