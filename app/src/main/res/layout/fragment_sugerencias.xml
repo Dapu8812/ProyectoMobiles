@@ -7,7 +7,15 @@
     tools:context="com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <!--/**
+     * Proyecto final Moviles Uniquindio
+     *
+     * @author Daniel Alvarado Arias
+     * @author Leydi Giraldo Franco
+     * @author Juan Diego Buitrago
+     * 28 de Abril de 2016
+     */
+    -->
     <TextView
         android:id="@+id/titulesugerencias"
         android:layout_width="match_parent"

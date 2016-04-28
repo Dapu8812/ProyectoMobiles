@@ -12,7 +12,12 @@ import com.uniquindio.android.electiva.proyectomobiles.R;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
  */
 public class DetalleNoticiaFragment extends Fragment implements View.OnClickListener{
 

@@ -19,7 +19,14 @@ import com.uniquindio.android.electiva.proyectomobiles.util.Utilidades;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 import java.util.ArrayList;
-
+/**
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
+ */
 public class NavigationActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
