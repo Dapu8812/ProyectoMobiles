@@ -23,8 +23,6 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 import java.util.ArrayList;
 
-
-public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener{
 /**
  * Proyecto final Moviles Uniquindio
  *
@@ -33,14 +31,24 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
  * @author Juan Diego Buitrago
  * 28 de Abril de 2016
  */
+public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener{
 
+    //Es un contenedor que permite interactuar entre vistas
     DrawerLayout drawerLayout;
+
+    //Menú de navegacion estandar
     NavigationView navView;
+
+    //Arraylist de todas las noticias
     private ArrayList<Noticia> noticias;
   //  private NoticiasFragment listaNoticias;
 
 
-
+    /**
+     * Remplaza el fragmento, y agrega
+     * el fragmento anterior a la pila.
+     * @param fragment
+     */
     private void remplazarFragmento(Fragment fragment , int t) {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -52,15 +60,32 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         transaction.commit();
     }
 
+    /**
+     * Metodo que redirige a la pagina
+     * de la universidad del quindio.
+     *
+     */
     public void URLiniciar() {
+        // intent  es una descripción abstracta de una operación a realizar
         Intent Urlini = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uniquindio.edu.co/"));
+
+        //utilizado con startActivity  para poner en marcha la actividad para dirigirse a la pagina
         startActivity(Urlini);
     }
 
+    /**
+     * Metodo OnCreate
+     * El cual se encarga de hacer funcionar la aplicacion.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /**
+         *Vista para cambiar el lenguaje dependiendo de cual
+         seleccion el usuario
+         */
         Utilidades.obtenerLenguaje(this);
 
         noticias = new ArrayList<>();
@@ -71,13 +96,17 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         //listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
         //listaNoticias.setPeliculas(noticias);
 
+        //SetcontentView hace el llamado a la interfaz de navegacion
         setContentView(R.layout.activity_navigation);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // FindviewById para recuperar los widgets en que la IU que necesita para interactuar
+        //igualmente el drawerLayout es un contenedor que permite interactuar entre vistas
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         navView = (NavigationView) findViewById(R.id.navview);
         navView.setItemIconTintList(null);
 
@@ -88,6 +117,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         //remplazarFragmento(noticiasFragment, 1);
 
+        // SetNavigationItemSelectedListener  es el oyente para el manejo de eventos de elementos de navegación
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
