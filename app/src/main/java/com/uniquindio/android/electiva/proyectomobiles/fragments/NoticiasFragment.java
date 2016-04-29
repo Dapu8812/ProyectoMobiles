@@ -30,8 +30,13 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
 
 
     private AdaptadorNoticia adaptador;
+
+    //Responsable de proporcionar vistas
     private RecyclerView listadoDeNoticias;
+
+    //Lista de  Las noticias a mostrar
     private ArrayList<Noticia> noticias;
+
     private OnNoticiaSeleccionadaListener listener;
 
     public NoticiasFragment() {
@@ -39,7 +44,13 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     }
 
 
-
+    /**
+     *  /**
+     *onAttach llamada una vez que el
+     * fragmento se asocia con su actividad
+     *
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -58,6 +69,13 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
 
     }
 
+    /**
+     * OncCreateView crea y devuelve la jerarquía vista asociada con el fragmento
+     * @param inflater
+     * @param container
+     * @param savedInstanceState guarda los datos sobre el estado de actividad,
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,6 +83,10 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
         return inflater.inflate(R.layout.fragment_noticias, container, false);
     }
 
+    /**
+     * OnActivityCreated llena la lista del adaptador con las noticias
+     * @param savedInstanceState  guarda los datos sobre el estado de actividad,
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -77,18 +99,25 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
 
     }
 
+    /**
+     *El evento click, visualizar un div en coordenadas del ratón
+     * @param pos posicion
+     */
     @Override
     public void onClickPosition(int pos) {
         Log.v("onclic", pos+" seleccinada ");
         listener.onNoticiaSeleccionada(pos);
     }
-
-    public void setNoticias(ArrayList<Noticia> noticia) {
+    // Metodo get de las noticias.
+    public void setNoticias(ArrayList<Noticia> noticia)
+    {
         this.noticias = noticia;
     }
 
-
- public   interface OnNoticiaSeleccionadaListener {
+    /**
+     * Interfaz que mmuestra la noticia selecionada
+     */
+    public   interface OnNoticiaSeleccionadaListener {
         void onNoticiaSeleccionada(int position);
     }
 }

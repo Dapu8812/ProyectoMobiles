@@ -51,6 +51,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
      */
     private void remplazarFragmento(Fragment fragment , int t) {
 
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
 
@@ -66,7 +67,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
      *
      */
     public void URLiniciar() {
-        // intent  es una descripción abstracta de una operación a realizar
+        // intent  es una descripción abstracta de una operación a realizar, y esta accion redirije a la pagina de la Uq.
         Intent Urlini = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uniquindio.edu.co/"));
 
         //utilizado con startActivity  para poner en marcha la actividad para dirigirse a la pagina
@@ -75,7 +76,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     /**
      * Metodo OnCreate
-     * El cual se encarga de hacer funcionar la aplicacion.
+     * El cual se encarga de hacer funcionar la aplicacion
+     * De la vista Navegacion.
      * @param savedInstanceState
      */
     @Override
@@ -88,6 +90,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
          */
         Utilidades.obtenerLenguaje(this);
 
+        //Arraylist de las noticias a mostrar en la vista
         noticias = new ArrayList<>();
         noticias.add(new Noticia("noticia 1"));
         noticias.add(new Noticia("noticia 2"));
@@ -118,6 +121,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         //remplazarFragmento(noticiasFragment, 1);
 
         // SetNavigationItemSelectedListener  es el oyente para el manejo de eventos de elementos de navegación
+        //En el cual muestra la vista seleccionada por el usuario
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -148,6 +152,11 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         });
     }
 
+    /**
+     * OnOptionsItemSelected se llama cada vez que se selecciona un elemento en el menú de opciones.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
