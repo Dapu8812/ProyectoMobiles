@@ -23,16 +23,30 @@ import java.util.ArrayList;
  */
 public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.NoticiaViewHolder> {
 
+    //Lista de las noticias.
     ArrayList<Noticia> noticias;
 
+    //El evento onclick, visualizar un div en coordenadas del ratón
     private static OnClickAdaptadorNoticia listener;
 
+    /**
+     * Metodo es el encargado de enviar la Noticia al  la lista
+     * utilizando el evento OnClick
+     * @param noticias Lista de las noticias
+     * @param noticiasFragment
+     */
     public AdaptadorNoticia(ArrayList<Noticia> noticias, NoticiasFragment noticiasFragment) {
         this.noticias = noticias;
         listener = (OnClickAdaptadorNoticia) noticiasFragment;
     }
 
-
+    /**
+     *en este metodo el onCreateViewHolder se utilizará para mostrar los
+     *  elementos de la snotiicas
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public NoticiaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -41,6 +55,12 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         return NoticiaVH;
     }
 
+    /**
+     * Este metodo se utilizara para visualizar las notiicas en
+     * la posición especificada
+     * @param holder representa el contenido de la noticia en la posición dada en el conjunto
+     * @param position La posición de la noticia dentro del conjunto de datos del adaptador.
+     */
     @Override
     public void onBindViewHolder(NoticiaViewHolder holder, int position) {
 
@@ -48,21 +68,37 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         holder.binNoticia(n);
     }
 
+    /**
+     *Este metodo devuelve el número total de noticias
+     * en el conjunto de datos de retención por el adaptador.
+     * @return
+     */
     @Override
     public int getItemCount() {
         return noticias.size();
     }
 
+    /**
+     *El evento click, visualizar un div en coordenadas del ratón
+     */
     public interface OnClickAdaptadorNoticia {
         public void onClickPosition(int pos);
     }
 
-
-    public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    /**
+     *
+     *
+     */
+    public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    {
 
         private TextView titulo;
         private TextView descripcion;
 
+        /**
+         *
+         * @param itemView
+         */
         public NoticiaViewHolder(View itemView) {
             super(itemView);
             titulo = (TextView) itemView.findViewById(R.id.titulo_noticia);
@@ -70,11 +106,19 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
             Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
         }
 
+        /**
+         *
+         * @param noticia
+         */
         public void binNoticia(Noticia noticia) {
             titulo.setText(noticia.getTitulo());
             descripcion.setText(noticia.getDescripcion());
         }
 
+        /**
+         *
+         * @param v
+         */
         @Override
         public void onClick(View v) {
             Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
