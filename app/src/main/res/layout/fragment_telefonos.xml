@@ -1,19 +1,22 @@
+<!--/**
+ * Proyecto final Moviles Uniquindio
+ *
+ * @author Daniel Alvarado Arias
+ * @author Leydi Giraldo Franco
+ * @author Juan Diego Buitrago
+ * 28 de Abril de 2016
+ */
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment">
-    <!--/**
-     * Proyecto final Moviles Uniquindio
-     *
-     * @author Daniel Alvarado Arias
-     * @author Leydi Giraldo Franco
-     * @author Juan Diego Buitrago
-     * 28 de Abril de 2016
-     */
-    -->
+    tools:context=".fragments.TelefonosFragement">
+
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecViewdependencias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
 </FrameLayout>

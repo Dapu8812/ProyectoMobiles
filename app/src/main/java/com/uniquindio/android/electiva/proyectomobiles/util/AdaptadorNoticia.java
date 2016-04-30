@@ -25,7 +25,8 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
 
     ArrayList<Noticia> noticias;
 
-    private static OnClickAdaptadorNoticia listener;
+    //private static OnClickAdaptadorNoticia listener;
+    private OnClickAdaptadorNoticia listener;
 
     public AdaptadorNoticia(ArrayList<Noticia> noticias, NoticiasFragment noticiasFragment) {
         this.noticias = noticias;
@@ -61,18 +62,17 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
     public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView titulo;
-        private TextView descripcion;
+// TextView descripcion;
 
         public NoticiaViewHolder(View itemView) {
             super(itemView);
             titulo = (TextView) itemView.findViewById(R.id.titulo_noticia);
-            descripcion = (TextView) itemView.findViewById(R.id.descripcion_noticia);
             Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
         }
 
         public void binNoticia(Noticia noticia) {
             titulo.setText(noticia.getTitulo());
-            descripcion.setText(noticia.getDescripcion());
+           // descripcion.setText(noticia.getDescripcion());
         }
 
         @Override

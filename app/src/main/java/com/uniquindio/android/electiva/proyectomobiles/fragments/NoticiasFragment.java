@@ -63,7 +63,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
             try {
                 listener = (OnNoticiaSeleccionadaListener) activity;
             } catch (ClassCastException e) {
-                throw new ClassCastException(activity.toString() + " debe implementar la interfaz OnPeliculaSeleccionadaListener");
+                throw new ClassCastException(activity.toString() + " debe implementar la interfaz OnNoticiaSeleccionadaListener");
             }
         }
 
@@ -91,7 +91,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        listadoDeNoticias = (RecyclerView) getView().findViewById(R.id.RecView);
+        listadoDeNoticias = (RecyclerView) getView().findViewById(R.id.RecViewnoticias);
         Log.v(NoticiasFragment.class.getSimpleName(), ""+noticias);
         adaptador = new AdaptadorNoticia(noticias, this);
         listadoDeNoticias.setAdapter(adaptador);

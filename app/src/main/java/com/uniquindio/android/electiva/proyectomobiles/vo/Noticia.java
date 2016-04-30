@@ -19,7 +19,8 @@ public class Noticia implements Parcelable{
     public Noticia(String titulo) {
         this.titulo = titulo;
     }
-protected Noticia(Parcel in){
+
+    protected Noticia(Parcel in){
     titulo = in.readString();
     descripcion=in.readString();
     //imagen

@@ -7,4 +7,6 @@
     <string name="URL">Pagina UQ</string>
     <string name="es_us">Cambio de Idioma</string>
     <string name="titulonoticiadetalle">Máquina de Ingenio Abril 22 de 2016</string>
+    <string name="identificadorDependencia">Nombre</string>
+    <string name="identificadorcadnumeros">numero de contactos</string>
 </resources>

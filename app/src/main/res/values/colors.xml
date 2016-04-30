@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#186c18</color>
-    <color name="colorPrimaryDark">#159129</color>
+    <color name="colorPrimary">#1d871d</color>
+    <color name="tarjetasNoticias">#a0e4ab</color>
+    <color name="tarjetasdependencia">#939694</color>
+    <color name="colorPrimaryDark">#1a5b24</color>
     <color name="colorAccent">#232323</color>
 
 </resources>

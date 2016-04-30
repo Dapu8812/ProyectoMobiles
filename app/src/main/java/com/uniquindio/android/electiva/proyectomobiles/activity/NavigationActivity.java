@@ -19,7 +19,9 @@ import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragmen
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
 import com.uniquindio.android.electiva.proyectomobiles.util.Utilidades;
+import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
+import com.uniquindio.android.electiva.proyectomobiles.vo.Telefono;
 
 import java.util.ArrayList;
 
@@ -31,7 +33,7 @@ import java.util.ArrayList;
  * @author Juan Diego Buitrago
  * 28 de Abril de 2016
  */
-public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener{
+public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener, TelefonosFragment.OnDependenciaSeleccionadaListener{
 
     //Es un contenedor que permite interactuar entre vistas
     DrawerLayout drawerLayout;
@@ -41,6 +43,10 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     //Arraylist de todas las noticias
     private ArrayList<Noticia> noticias;
+    private ArrayList<Dependencia> dependencias;
+    private ArrayList<Telefono> telefonos;
+    private ArrayList<Telefono> telefonos2;
+    private ArrayList<Telefono> telefonos3;
   //  private NoticiasFragment listaNoticias;
 
 
@@ -96,6 +102,23 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticias.add(new Noticia("noticia 2"));
         noticias.add(new Noticia("noticia 3"));
         noticias.add(new Noticia("noticia 4"));
+        dependencias=new ArrayList<>();
+        telefonos=new ArrayList<>();
+        telefonos.add(new Telefono("7494949","123"));
+        telefonos.add(new Telefono("7494949","123"));
+        dependencias.add(new Dependencia("dependencia 1",telefonos));
+        dependencias.add(new Dependencia("dependencia 2",telefonos));
+        dependencias.add(new Dependencia("dependencia 3",telefonos));
+        dependencias.add(new Dependencia("dependencia 4",telefonos));
+        dependencias.add(new Dependencia("dependencia 5",telefonos));
+        dependencias.add(new Dependencia("dependencia 6",telefonos));
+        dependencias.add(new Dependencia("dependencia 7",telefonos));
+        dependencias.add(new Dependencia("dependencia 8",telefonos));
+        dependencias.add(new Dependencia("dependencia 9",telefonos));
+        dependencias.add(new Dependencia("dependencia 10",telefonos));
+        dependencias.add(new Dependencia("dependencia 11",telefonos));
+
+
         //listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
         //listaNoticias.setPeliculas(noticias);
 
@@ -116,9 +139,12 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         final NoticiasFragment noticiasFragment = new NoticiasFragment();
         noticiasFragment.setNoticias(noticias);
 
-        Log.v(NavigationActivity.class.getSimpleName(), ""+noticias);
+        final TelefonosFragment telefonosFragment = new TelefonosFragment();
+        telefonosFragment.setDependencias(dependencias);
 
-        //remplazarFragmento(noticiasFragment, 1);
+        Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
+
+        remplazarFragmento(noticiasFragment, 1);
 
         // SetNavigationItemSelectedListener  es el oyente para el manejo de eventos de elementos de navegación
         //En el cual muestra la vista seleccionada por el usuario
@@ -130,10 +156,10 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                         remplazarFragmento(noticiasFragment, 0);
                         break;
                     case R.id.telefonos:
-                        remplazarFragmento(new TelefonosFragment(),0);
+                        remplazarFragmento(telefonosFragment, 0);
                         break;
                     case R.id.sugerencias:
-                        remplazarFragmento(new SugerenciasFragment(),0);
+                        remplazarFragmento(new SugerenciasFragment(), 0);
                         break;
                     case R.id.pagina:
                         URLiniciar();
@@ -181,5 +207,21 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
             intent.putExtra("Noticia", noticias.get(position));
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onDependenciaSeleccionada(int position) {
+      /**  boolean esFragmento =
+                getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
+        if (esFragmento) {
+            ((DetalleNoticiaFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position));
+        } else {
+            Intent intent = new Intent(NavigationActivity.this,
+                    DetalleDeNoticiasActivity.class);
+            intent.putExtra("Noticia", noticias.get(position));
+            startActivity(intent);
+        }
+     */
     }
 }
