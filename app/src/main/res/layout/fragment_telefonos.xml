@@ -7,11 +7,54 @@
  * 28 de Abril de 2016
  */
 -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.TelefonosFragement">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/HEAD_dependencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/identificadorDependencia"
+                android:textSize="25sp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true" />
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/identificadorcadnumeros"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:maxWidth="100dp"
+                android:layout_centerVertical="true"
+                android:textAlignment="viewEnd" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
@@ -19,4 +62,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</FrameLayout>
+</LinearLayout>
+

@@ -24,8 +24,6 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
 
     public AdaptadorDependencia(ArrayList<Dependencia> dependencias, TelefonosFragment telefonosFragment) {
         this.dependencias = dependencias;
-        Log.d("TAG", "Element " + dependencias.get(0).getTelefonos().size() + " clicked. ");
-
         listener = (OnClickAdaptadorDependencia) telefonosFragment;
 
     }

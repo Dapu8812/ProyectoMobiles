@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +72,7 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
         super.onActivityCreated(savedInstanceState);
 
         listadoDeDependencias = (RecyclerView) getView().findViewById(R.id.RecViewdependencias);
-        Log.v(NoticiasFragment.class.getSimpleName(), "" + dependencias);
+        //Log.v(NoticiasFragment.class.getSimpleName(), "" + dependencias);
         adaptador = new AdaptadorDependencia(dependencias, this);
         listadoDeDependencias.setAdapter(adaptador);
         listadoDeDependencias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
