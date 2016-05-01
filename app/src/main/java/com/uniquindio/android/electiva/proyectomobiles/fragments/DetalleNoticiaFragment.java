@@ -24,6 +24,7 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
     //Titulo de la noticia
     private TextView titulo;
     private Noticia noticia;
+    private TextView descrpcion;
 
     public DetalleNoticiaFragment() {
         // Required empty public constructor
@@ -47,12 +48,16 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
     /**
      * Metodo que muestra los detalles de la noticia
-     * @param n
+     * @param noticia
      */
-    public void mostrarDetalle(Noticia n) {
-        this.noticia = n;
+    public void mostrarDetalle(Noticia noticia) {
+        this.noticia = noticia;
+       // Log.d("TAG", "Element " + n.equals(null) + " clicked. ");
         titulo = (TextView) getView().findViewById(R.id.titulo_detalle_noticia);
-        titulo.setText(n.getTitulo());
+        descrpcion = (TextView) getView().findViewById(R.id.descripcion_de_detalle_noticia);
+        //titulo.setText(noticia.getTitulo());
+       // descrpcion.setText(n.getDescripcion());
+
 
 
     }

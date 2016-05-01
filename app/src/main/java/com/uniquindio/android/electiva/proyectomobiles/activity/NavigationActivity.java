@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleDependenciaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleNoticiaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
@@ -45,8 +46,6 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     private ArrayList<Noticia> noticias;
     private ArrayList<Dependencia> dependencias;
     private ArrayList<Telefono> telefonos;
-    private ArrayList<Telefono> telefonos2;
-    private ArrayList<Telefono> telefonos3;
   //  private NoticiasFragment listaNoticias;
 
 
@@ -104,8 +103,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticias.add(new Noticia("noticia 4"));
         dependencias=new ArrayList<>();
         telefonos=new ArrayList<>();
-        telefonos.add(new Telefono("7494949","123"));
-        telefonos.add(new Telefono("7494949","123"));
+        telefonos.add(new Telefono("7494949","123","leydi giraldo"));
+        telefonos.add(new Telefono("7494949","123","juan Diego buitrago"));
         dependencias.add(new Dependencia("dependencia 1",telefonos));
         dependencias.add(new Dependencia("dependencia 2",telefonos));
         dependencias.add(new Dependencia("dependencia 3",telefonos));
@@ -196,11 +195,14 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     @Override
     public void onNoticiaSeleccionada(int position) {
+    //    Log.d("TAG", "Element " + noticias.size() + " clicked. ");
+    // Log.d("TAG", "Element " + noticias.get(0).getTitulo() + " clicked. ");
+
         boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
         if (esFragmento) {
             ((DetalleNoticiaFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position));
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position*1));
         } else {
             Intent intent = new Intent(NavigationActivity.this,
                     DetalleDeNoticiasActivity.class);
@@ -211,17 +213,17 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     @Override
     public void onDependenciaSeleccionada(int position) {
-      /**  boolean esFragmento =
-                getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
+        boolean esFragmento =
+                getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia) != null;
         if (esFragmento) {
-            ((DetalleNoticiaFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position));
+            ((DetalleDependenciaFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia)).mostrarDetalle(dependencias.get(position));
         } else {
             Intent intent = new Intent(NavigationActivity.this,
-                    DetalleDeNoticiasActivity.class);
-            intent.putExtra("Noticia", noticias.get(position));
+                    DetalleDependenciaActivity.class);
+            intent.putExtra("Noticia", dependencias.get(position));
             startActivity(intent);
         }
-     */
+
     }
 }

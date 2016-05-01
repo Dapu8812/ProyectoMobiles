@@ -24,8 +24,8 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
         DetalleNoticiaFragment detalleDePelicula =
                 (DetalleNoticiaFragment)
                         getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia);
-        Noticia pelicula = (Noticia)
+        Noticia noticia = (Noticia)
                 getIntent().getExtras().get("noticia");
-        detalleDePelicula.mostrarDetalle(pelicula);
+        detalleDePelicula.mostrarDetalle(noticia);
     }
 }

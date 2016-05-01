@@ -9,18 +9,23 @@ import android.os.Parcelable;
 public class Telefono implements Parcelable{
     String numero;
     String extension;
+    String Dueño;
 
-    public Telefono(String numero, String extension) {
+    public Telefono(String numero, String extension, String dueño) {
+
         this.numero = numero;
         this.extension = extension;
+        this.Dueño = dueño;
     }
 
     protected Telefono(Parcel in) {
         numero = in.readString();
         extension = in.readString();
+        Dueño = in.readString();
     }
 
     public static final Creator<Telefono> CREATOR = new Creator<Telefono>() {
+
         @Override
         public Telefono createFromParcel(Parcel in) {
             return new Telefono(in);
@@ -36,6 +41,22 @@ public class Telefono implements Parcelable{
         return numero;
     }
 
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
+    public String getDueño() {
+        return Dueño;
+    }
+
+    public void setDueño(String dueño) {
+        Dueño = dueño;
+    }
+
     public void setNumero(String numero) {
         this.numero = numero;
     }
@@ -48,5 +69,8 @@ public class Telefono implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(numero);
+        dest.writeString(extension);
+        dest.writeString(Dueño);
+
     }
 }

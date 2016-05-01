@@ -19,13 +19,16 @@ import java.util.ArrayList;
 public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependencia.DependenciaViewHolder>{
 
     public ArrayList<Dependencia> dependencias;
-
-    public OnClickAdaptadorDependencia listener;
+    public static OnClickAdaptadorDependencia listener;
 
     public AdaptadorDependencia(ArrayList<Dependencia> dependencias, TelefonosFragment telefonosFragment) {
         this.dependencias = dependencias;
         listener = (OnClickAdaptadorDependencia) telefonosFragment;
 
+    }
+
+    public interface OnClickAdaptadorDependencia {
+        public void onClickPosition(int pos);
     }
 
     @Override
@@ -49,9 +52,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
         return dependencias.size();
     }
 
-    public interface OnClickAdaptadorDependencia {
-        public void onClickPosition(int pos);
-    }
+
 
     public static class DependenciaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -61,6 +62,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
 
         public DependenciaViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             nombreDependencia = (TextView) itemView.findViewById(R.id.nombre_dependencia);
             numeroContactos= (TextView) itemView.findViewById(R.id.Cantidad_numeros);
           //  Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
@@ -68,19 +70,19 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
 
         public void binDependencia(Dependencia dependencia,int numero) {
             nombreDependencia.setText(dependencia.getNombre());
-            numeroContactos.setText(""+numero);
+            numeroContactos.setText("" + numero);
 
         }
-
+/*
         @Override
         public void onClick(View v) {
             Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
         }
-
-/*        @Override
+*/
+        @Override
         public void onClick(View v) {
             listener.onClickPosition(getAdapterPosition());
             Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
-        }*/
+        }
     }
 }

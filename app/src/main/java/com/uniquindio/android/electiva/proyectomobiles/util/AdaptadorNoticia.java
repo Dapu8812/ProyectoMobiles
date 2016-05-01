@@ -1,7 +1,6 @@
 package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
 
 
     //private static OnClickAdaptadorNoticia listener;
-    private OnClickAdaptadorNoticia listener;
+    private static OnClickAdaptadorNoticia listener;
 
 
 
@@ -50,6 +49,14 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
      * @param viewType
      * @return
      */
+
+    /**
+     *El evento click, visualizar un div en coordenadas del ratón
+     */
+    public interface OnClickAdaptadorNoticia {
+        public void onClickPosition(int pos);
+    }
+
     @Override
     public NoticiaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -81,12 +88,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         return noticias.size();
     }
 
-    /**
-     *El evento click, visualizar un div en coordenadas del ratón
-     */
-    public interface OnClickAdaptadorNoticia {
-        public void onClickPosition(int pos);
-    }
+
 
     /**
      *
@@ -96,7 +98,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
     {
 
         private TextView titulo;
-// TextView descripcion;
+        private TextView descripcion;
 
         /**
          *
@@ -104,8 +106,10 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
          */
         public NoticiaViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             titulo = (TextView) itemView.findViewById(R.id.titulo_noticia);
-            Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
+
+           // Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
         }
 
         /**
@@ -121,15 +125,15 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
          *
          * @param v
          */
+    /*    @Override
+        public void onClick(View v) {
+           // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
+        }
+*/
         @Override
         public void onClick(View v) {
-            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
-        }
-
-/*        @Override
-        public void onClick(View v) {
             listener.onClickPosition(getAdapterPosition());
-            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
-        }*/
+           // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
+        }
     }
 }
