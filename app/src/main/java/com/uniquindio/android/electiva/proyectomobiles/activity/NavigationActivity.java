@@ -44,7 +44,11 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     //Arraylist de todas las noticias
     private ArrayList<Noticia> noticias;
+
+    //Lista de las dependencias de la universidad
     private ArrayList<Dependencia> dependencias;
+
+    //Lista de los numeros telefonicos
     private ArrayList<Telefono> telefonos;
   //  private NoticiasFragment listaNoticias;
 
@@ -101,7 +105,9 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticias.add(new Noticia("noticia 2"));
         noticias.add(new Noticia("noticia 3"));
         noticias.add(new Noticia("noticia 4"));
+        //Lista de las dependenicas
         dependencias=new ArrayList<>();
+        //Lista de los telefonos de cada dependencia
         telefonos=new ArrayList<>();
         telefonos.add(new Telefono("7494949","123","leydi giraldo"));
         telefonos.add(new Telefono("7494949","123","juan Diego buitrago"));
@@ -131,7 +137,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         // FindviewById para recuperar los widgets en que la IU que necesita para interactuar
         //igualmente el drawerLayout es un contenedor que permite interactuar entre vistas
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        //Encuentra la vista de la navegacion el atributo id del XML que fue procesada en onCreate
         navView = (NavigationView) findViewById(R.id.navview);
         navView.setItemIconTintList(null);
 
@@ -192,14 +198,23 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * Metodo donde se muestra el fragmento
+     * de los detalles de una noticia que fue seleccionada
+     * @param position
+     */
     @Override
     public void onNoticiaSeleccionada(int position) {
     //    Log.d("TAG", "Element " + noticias.size() + " clicked. ");
     // Log.d("TAG", "Element " + noticias.get(0).getTitulo() + " clicked. ");
 
+        //getSupportFragmentManager Devolver el FragmentManager para interactuar
+        // con los fragmentos asociados a esta actividad en este caso el fragmento
+        //de los detalles de la noticia
         boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
+        //Condiciones donde se muestra y se verifica si existe esa noticia
+        //y la muestra su detalle
         if (esFragmento) {
             ((DetalleNoticiaFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position*1));
@@ -211,10 +226,20 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         }
     }
 
+    /**
+     *  Metodo donde se muestra el fragmento
+     * de los detalles de la dependencia  que fue seleccionada
+     * @param position
+     */
     @Override
     public void onDependenciaSeleccionada(int position) {
+        //getSupportFragmentManager Devolver el FragmentManager para interactuar
+        // con los fragmentos asociados a esta actividad en este caso el fragmento
+        //de la dependencia seleccionada
         boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia) != null;
+        //Condiciones donde se muestra y se verifica si existe esa dependencia
+        //y la muestra su detalle
         if (esFragmento) {
             ((DetalleDependenciaFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia)).mostrarDetalle(dependencias.get(position));
