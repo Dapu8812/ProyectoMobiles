@@ -44,9 +44,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imagen_detalle_noticia"
-                android:src="@drawable/imagennav"
-                android:layout_gravity="center"
-                android:focusableInTouchMode="false" />
+                android:src="@drawable/imagennoticia"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
 
 
 
@@ -55,11 +55,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_margin="10dp"
                 android:maxLines="50"
                 android:text="@string/descripcion_detalle_noticia"
-                />
+                android:textAlignment="center" />
 
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               >
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fb"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/twitter"
+                android:layout_toStartOf="@id/fb"
+                android:layout_marginRight="15dp" />
+           </RelativeLayout>
 
 
         </LinearLayout>

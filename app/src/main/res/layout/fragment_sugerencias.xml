@@ -31,14 +31,16 @@
         android:textAlignment="center"
         android:textColor="#159029"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
 
     <EditText
         android:id="@+id/editTextsugerencias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|left|top"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="8dp"
 
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
