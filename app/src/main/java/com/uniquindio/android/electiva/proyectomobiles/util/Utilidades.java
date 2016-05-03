@@ -16,14 +16,24 @@ import java.util.Locale;
  * 28 de Abril de 2016
  */
 public class Utilidades {
+    //Se incializan los string dependiendo el idioma
+    //español, ingles o el determinado.
     public final static String MIS_PREFERENCIAS = "MisPreferencias";
     public final static String LENGUAJE_DE_PREFERENCIA = "languaje_preferences";
     public final static String LENGUAJE_ES = "es";
     public final static String LENGUAJE_EN = "en";
 
 
+    /**
+     * Meotodo donde cambia el idio de las vistas
+     * dependiendo del que fue seleccionado por el usuario
+     * @param context esta es una clase abstracta
+     *                cuya clase muestra la información global
+     *                sobre un entorno de aplicación
+     */
     public static void cambiarIdioma(Context context) {
 
+        //para acceder y modificar los datos de preferencia devueltos por getSharedPreferences
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
 
@@ -40,7 +50,13 @@ public class Utilidades {
         obtenerLenguaje(context);
     }
 
+    /**
+     * Metodo donde se obtine el lenguje en el cual
+     * se encuentra la aplicacion.
+     * @param context
+     */
     public static void obtenerLenguaje(Context context) {
+       // //para acceder y modificar los datos de preferencia devueltos por getSharedPreferences
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
         Locale locale = new Locale(language);

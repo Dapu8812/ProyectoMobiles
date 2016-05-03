@@ -109,12 +109,19 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     }
 
 
-
+    /**
+     * Metodo que hace el llamado a
+     * la dependencia seleccionada
+     * @param pos posicion
+     */
     @Override
     public void onClickPosition(int pos) {
         listener.onDependenciaSeleccionada(pos);
     }
 
+    /**
+     * Metodo que se muestra la pelicula seleccionada
+     */
     public   interface OnDependenciaSeleccionadaListener {
         void onDependenciaSeleccionada(int position);
     }

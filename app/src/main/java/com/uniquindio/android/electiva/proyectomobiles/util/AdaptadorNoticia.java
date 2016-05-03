@@ -57,6 +57,15 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         public void onClickPosition(int pos);
     }
 
+
+    /**
+     * Este metodo infla la vista del resumen de
+     * las de la noticia
+     * @param parent en la que se añadirá la nueva vista después de que se une a una posición adaptador.
+     * @param viewType el tipo de la nueva vista
+     *
+     * @return la notivia viewHolder
+     */
     @Override
     public NoticiaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -92,16 +101,19 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
 
     /**
      *
-     *
+     *Clase de De la dependencia viewHolder
+     * implementando la subclase ViewHolder
+     * el cual añade los datos
      */
     public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-
+        //Atributos de la noticia
         private TextView titulo;
         private TextView descripcion;
 
         /**
-         *
+         *Este metodo va invoca la vista de dependencias
+         * con sus repectivos atributos
          * @param itemView
          */
         public NoticiaViewHolder(View itemView) {
@@ -130,6 +142,12 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
            // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
         }
 */
+
+        /**
+         * *Este metodo hace el llamado
+         * cuando el usuario ha hecho  en una vista.
+         * @param v
+         */
         @Override
         public void onClick(View v) {
             listener.onClickPosition(getAdapterPosition());
