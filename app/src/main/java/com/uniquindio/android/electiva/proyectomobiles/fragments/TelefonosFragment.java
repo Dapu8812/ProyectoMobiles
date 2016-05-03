@@ -27,21 +27,40 @@ import java.util.ArrayList;
  */
 public class TelefonosFragment extends Fragment implements AdaptadorDependencia.OnClickAdaptadorDependencia {
 
+    //Atributos de la clase de los numeros telefonicos
     private AdaptadorDependencia adaptador;
+
+    //Atributo para crear la lista de las dependenicas
     private RecyclerView listadoDeDependencias;
+
+    //Lista de las dependencias
     private ArrayList<Dependencia> dependencias;
+
     private OnDependenciaSeleccionadaListener listener;
 
+    /**
+     *
+     */
     public TelefonosFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Metodos modificadores de las dependencias
+     * @param dependencias Lista de las dependencias
+     */
     public void setDependencias(ArrayList<Dependencia> dependencias)
     {
         this.dependencias = dependencias;
     }
 
+    /**
+     * onAttach llamada una vez que el
+     * fragmento se asocia con su actividad
+     * @param context Esta es una clase abstracta
+     *                cuya clase muestra la información global
+     *                sobre un entorno de aplicación
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -60,10 +79,20 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
 
     }
 
+    /**
+     *  OncCreateView crea y devuelve la jerarquía vista asociada con el fragmento de los
+     *  numeros telefonicos
+     * @param inflater
+     * @param container
+     * @param savedInstanceState guarda los datos sobre el estado de actividad,
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //los fragmentos de los numeros telefonicos.
         return inflater.inflate(R.layout.fragment_telefonos, container, false);
     }
 

@@ -35,20 +35,22 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
      * El cual se encarga de hacer funcionar la aplicacion
      * La vista detalle Noticia
      * @param inflater
-     * @param container
+     * @param container vista
      * @param savedInstanceState
-     * @return
+     * @return El fragmento del detalle de la noticia
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //El inflate() es un método que se utiliza para construir y añadir las Views de los fragmentos d
+        //detalles de la noticia.
         return inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
     }
 
     /**
      * Metodo que muestra los detalles de la noticia
-     * @param noticia
+     * @param noticia que se sellecciono para ser mostrarda
      */
     public void mostrarDetalle(Noticia noticia) {
         this.noticia = noticia;

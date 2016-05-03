@@ -39,17 +39,21 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
 
     private OnNoticiaSeleccionadaListener listener;
 
+    /**
+     *
+     */
     public NoticiasFragment() {
         // Required empty public constructor
     }
 
 
     /**
-     *  /**
+     *
      *onAttach llamada una vez que el
      * fragmento se asocia con su actividad
-     *
-     * @param context
+     * @param context Esta es una clase abstracta
+     *                cuya clase muestra la información global
+     *                sobre un entorno de aplicación
      */
     @Override
     public void onAttach(Context context) {
@@ -71,6 +75,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
 
     /**
      * OncCreateView crea y devuelve la jerarquía vista asociada con el fragmento
+     * de las noticias
      * @param inflater
      * @param container
      * @param savedInstanceState guarda los datos sobre el estado de actividad,
@@ -80,6 +85,8 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //de la vista de las noticias
         return inflater.inflate(R.layout.fragment_noticias, container, false);
     }
 
@@ -91,7 +98,10 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //getView crea una vista de forma manual o inflarlo a partir de un archivo de dise&ntilde;o XML
         listadoDeNoticias = (RecyclerView) getView().findViewById(R.id.RecViewnoticias);
+        //getSimpleName () devuelve nombre de la clase que representa en este caso el fragmento de la noticia
+        // tal cual como se define en el código fuente .
         Log.v(NoticiasFragment.class.getSimpleName(), ""+noticias);
         adaptador = new AdaptadorNoticia(noticias, this);
         listadoDeNoticias.setAdapter(adaptador);

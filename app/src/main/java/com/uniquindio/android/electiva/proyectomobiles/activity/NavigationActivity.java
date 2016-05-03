@@ -61,6 +61,9 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     private void remplazarFragmento(Fragment fragment , int t) {
 
 
+        ////getSupportFragmentManager devuelve el FragmentManager para interactuar
+        // con los fragmentos asociados a esta actividad en este caso el fragmento
+        //de los la navegacion de la aplicacion
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
 

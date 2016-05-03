@@ -44,6 +44,8 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //El detalle de las dependencias.
         return inflater.inflate(R.layout.fragment_detalle_dependencia, container, false);
     }
 
@@ -51,7 +53,7 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
      * Metodo que recibe la posicion de la dependencia
      * seleccionada por el usuario
      * y muestra el titulo y la descrpicion de esta noticia
-     * @param d
+     * @param d Ingresa la dependencia que se selecciono
      */
     public void mostrarDetalle(Dependencia d) {
         this.dependencia = d;

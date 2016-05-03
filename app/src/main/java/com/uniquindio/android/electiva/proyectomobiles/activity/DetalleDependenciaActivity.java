@@ -30,7 +30,7 @@ public class DetalleDependenciaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_dependencia);
         DetalleDependenciaFragment detalleDependencia =
                 (DetalleDependenciaFragment)
-                        //getSupportFragmentManager Devolver el FragmentManager para interactuar
+                        //getSupportFragmentManager devuelve el FragmentManager para interactuar
                         // con los fragmentos asociados a esta actividad en este caso el fragmento
                         //de los detalles de las dependecias
                         getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia);

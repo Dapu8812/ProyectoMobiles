@@ -24,11 +24,21 @@ public class SugerenciasFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /**
+     * Metodo OnCreate
+     * El cual se encarga de hacer funcionar la aplicacion
+     * los fragmentos de la sugerencias.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //la vista Sugerencias.
         return inflater.inflate(R.layout.fragment_sugerencias, container, false);
     }
 
