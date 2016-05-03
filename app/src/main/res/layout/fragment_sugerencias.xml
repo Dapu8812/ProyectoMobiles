@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,6 +16,10 @@
      * 28 de Abril de 2016
      */
     -->
+
+
+
+
     <TextView
         android:id="@+id/titulesugerencias"
         android:layout_width="match_parent"
@@ -27,7 +31,7 @@
         android:background="#bbbbbb"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:text="REPORTAR SUGERENCIA"
+        android:text="@string/Reportesugerencias"
         android:textAlignment="center"
         android:textColor="#159029"
         android:textSize="30dp"
@@ -41,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|left|top"
         android:layout_marginBottom="8dp"
-
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
@@ -61,7 +64,7 @@
         android:background="@color/colorPrimaryDark"
         android:padding="15dp"
         android:drawablePadding="5dp"
-        android:text="ENVIAR"
+        android:text="@string/enviarsugerencia"
         android:textSize="25dp"
         android:textStyle="normal"
         android:layout_marginBottom="10dp"/>
@@ -70,3 +73,4 @@
 
 
 </LinearLayout>
+

@@ -22,7 +22,7 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
 public class DetalleDependenciaFragment extends Fragment implements View.OnClickListener {
 
     //Atributos que conforman los detalles de una dependencia
-    private TextView numero;
+    private TextView nombreDependencia;
     private Dependencia dependencia;
     private TextView nombre;
 
@@ -59,10 +59,10 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
         this.dependencia = d;
         // Log.d("TAG", "Element " + n.equals(null) + " clicked. ");
         //el findViewById Encuentra  el atributo id del XML que fue procesada en onCreate
-        numero = (TextView) getView().findViewById(R.id.titulo_detalle_noticia);
-        nombre = (TextView) getView().findViewById(R.id.descripcion_de_detalle_noticia);
+        nombreDependencia = (TextView) getView().findViewById(R.id.nombre_dependencia_detalle);
+        nombreDependencia.setText(d.getNombre());
         //titulo.setText(noticia.getTitulo());
-        // descrpcion.setText(n.getDescripcion());
+
 
     }
 

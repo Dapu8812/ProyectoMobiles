@@ -9,4 +9,9 @@
     <string name="titulonoticiadetalle">Máquina de Ingenio Abril 22 de 2016</string>
     <string name="identificadorDependencia">Nombre</string>
     <string name="identificadorcadnumeros">numero de contactos</string>
+    <string name="nombreUsu">Nombre</string>
+    <string name="telUsu">Telefono</string>
+    <string name="extUsu">Ext</string>
+    <string name="Reportesugerencias">REPORTE DE SUGERENCIAS</string>
+    <string name="enviarsugerencia">ENVIAR</string>
 </resources>

@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
@@ -150,7 +149,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         final TelefonosFragment telefonosFragment = new TelefonosFragment();
         telefonosFragment.setDependencias(dependencias);
 
-        Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
+       // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
 
         remplazarFragmento(noticiasFragment, 1);
 
@@ -214,13 +213,14 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         //getSupportFragmentManager Devolver el FragmentManager para interactuar
         // con los fragmentos asociados a esta actividad en este caso el fragmento
         //de los detalles de la noticia
+
         boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia) != null;
         //Condiciones donde se muestra y se verifica si existe esa noticia
         //y la muestra su detalle
         if (esFragmento) {
             ((DetalleNoticiaFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position*1));
+                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia)).mostrarDetalle(noticias.get(position));
         } else {
             Intent intent = new Intent(NavigationActivity.this,
                     DetalleDeNoticiasActivity.class);
@@ -249,7 +249,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         } else {
             Intent intent = new Intent(NavigationActivity.this,
                     DetalleDependenciaActivity.class);
-            intent.putExtra("Noticia", dependencias.get(position));
+            intent.putExtra("Dependencia", dependencias.get(position));
             startActivity(intent);
         }
 

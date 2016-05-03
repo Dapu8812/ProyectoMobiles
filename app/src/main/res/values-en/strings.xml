@@ -9,5 +9,10 @@
     <string name="titulonoticiadetalle">Ingenio machine April 22, 2016</string>
     <string name="identificadorDependencia">Name</string>
     <string name="identificadorcadnumeros">number of contacts</string>
+    <string name="nombreUsu">Name</string>
+    <string name="telUsu">phone</string>
+    <string name="extUsu">Ext</string>
+    <string name="Reportesugerencias">SUGGEST REPORT</string>
+    <string name="enviarsugerencia">SEND</string>
 
 </resources>

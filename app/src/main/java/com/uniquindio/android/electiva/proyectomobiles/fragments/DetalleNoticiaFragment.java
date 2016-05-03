@@ -58,8 +58,8 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         //el findViewById Encuentra  el atributo id del XML que fue procesada en onCreate
         titulo = (TextView) getView().findViewById(R.id.titulo_detalle_noticia);
         descrpcion = (TextView) getView().findViewById(R.id.descripcion_de_detalle_noticia);
-        //titulo.setText(noticia.getTitulo());
-       // descrpcion.setText(n.getDescripcion());
+        titulo.setText(noticia.getTitulo());
+        descrpcion.setText(noticia.getDescripcion());
 
 
 

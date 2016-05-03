@@ -15,6 +15,7 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
  * @author Juan Diego Buitrago
  * 28 de Abril de 2016
  */
+
 public class DetalleDeNoticiasActivity extends AppCompatActivity {
 
     /**
@@ -29,6 +30,7 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        //Establece el contenido de los detalles de la noticia de una visión explícita
         setContentView(R.layout.activity_detalle_de_noticias);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         DetalleNoticiaFragment detalleDePelicula =
                 (DetalleNoticiaFragment)
                         //getSupportFragmentManager devuelve el FragmentManager para interactuar
@@ -36,7 +38,10 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
                         //de los detalles de las noticias
                         getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia);
         Noticia noticia = (Noticia)
-                getIntent().getExtras().get("noticia");
+                getIntent().getExtras().get("Noticia");
+
+       // getSupportActionBar().setTitle(noticia.getTitulo()); //arreglar null
+
         //al hacer el llamado este muestra en la vista el tituto y descripcion de la noticia.
         detalleDePelicula.mostrarDetalle(noticia);
     }
