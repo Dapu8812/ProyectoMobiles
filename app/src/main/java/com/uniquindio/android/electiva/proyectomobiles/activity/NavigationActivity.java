@@ -1,7 +1,10 @@
 package com.uniquindio.android.electiva.proyectomobiles.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,6 +18,7 @@ import android.view.MenuItem;
 import com.uniquindio.android.electiva.proyectomobiles.R;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleDependenciaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleNoticiaFragment;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.NoConexionFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
@@ -85,6 +89,18 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         startActivity(Urlini);
     }
 
+    private boolean EstaConectado(Context context) {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context
+                .CONNECTIVITY_SERVICE);
+        NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+        if (info == null || !info.isConnected() || !info.isAvailable()) {
+            return false;
+        }
+        return true;
+    }
+
+
     /**
      * Metodo OnCreate
      * El cual se encarga de hacer funcionar la aplicacion
@@ -149,6 +165,9 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         final TelefonosFragment telefonosFragment = new TelefonosFragment();
         telefonosFragment.setDependencias(dependencias);
 
+        final NoConexionFragment ConexionFragment= new NoConexionFragment();
+
+
        // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
 
         remplazarFragmento(noticiasFragment, 1);
@@ -158,30 +177,37 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.noticias:
-                        remplazarFragmento(noticiasFragment, 0);
-                        break;
-                    case R.id.telefonos:
-                        remplazarFragmento(telefonosFragment, 0);
-                        break;
-                    case R.id.sugerencias:
-                        remplazarFragmento(new SugerenciasFragment(), 0);
-                        break;
-                    case R.id.pagina:
-                        URLiniciar();
-                        break;
-                    case R.id.idioma:
-                        Utilidades.cambiarIdioma(NavigationActivity.this);
-                        Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);
-                        break;
+                boolean conectado = EstaConectado(getBaseContext());
+                if (conectado == true) {
+                    switch (item.getItemId()) {
+                        case R.id.noticias:
+                            remplazarFragmento(noticiasFragment, 0);
+                            break;
+                        case R.id.telefonos:
+                            remplazarFragmento(telefonosFragment, 0);
+                            break;
+                        case R.id.sugerencias:
+                            remplazarFragmento(new SugerenciasFragment(), 0);
+                            break;
+                        case R.id.pagina:
+                            URLiniciar();
+                            break;
+                        case R.id.idioma:
+                            Utilidades.cambiarIdioma(NavigationActivity.this);
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                            break;
+                    }
+                } else {
+                    remplazarFragmento(ConexionFragment, 0);
                 }
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;
             }
+
+
         });
     }
 
