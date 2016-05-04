@@ -53,7 +53,7 @@ public class Utilidades {
     /**
      * Metodo donde se obtine el lenguje en el cual
      * se encuentra la aplicacion.
-     * @param context
+     * @param context contexto
      */
     public static void obtenerLenguaje(Context context) {
        // //para acceder y modificar los datos de preferencia devueltos por getSharedPreferences

@@ -40,7 +40,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     private OnNoticiaSeleccionadaListener listener;
 
     /**
-     *
+     *Constructor de clase
      */
     public NoticiasFragment() {
         // Required empty public constructor

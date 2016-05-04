@@ -39,9 +39,6 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
                         getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_noticia);
         Noticia noticia = (Noticia)
                 getIntent().getExtras().get("Noticia");
-
-       // getSupportActionBar().setTitle(noticia.getTitulo()); //arreglar null
-
         //al hacer el llamado este muestra en la vista el tituto y descripcion de la noticia.
         detalleDePelicula.mostrarDetalle(noticia);
     }

@@ -26,7 +26,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
     //Lista de las dependencias
     public ArrayList<Dependencia> dependencias;
 
-
+    //Escuchador del fragmentoDependencias
     public static OnClickAdaptadorDependencia listener;
 
     /**
@@ -115,7 +115,6 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
             //el findViewById Encuentra  el atributo id del XML que fue procesada en onCreate
             nombreDependencia = (TextView) itemView.findViewById(R.id.nombre_dependencia);
             numeroContactos= (TextView) itemView.findViewById(R.id.Cantidad_numeros);
-          //  Log.d("TAG", "constructor " + getAdapterPosition() + " clicked. ");
         }
 
         /**
@@ -128,12 +127,6 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
             numeroContactos.setText("" + numero);
 
         }
-/*
-        @Override
-        public void onClick(View v) {
-            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
-        }
-*/
 
         /**
          *Este metodo hace el llamado

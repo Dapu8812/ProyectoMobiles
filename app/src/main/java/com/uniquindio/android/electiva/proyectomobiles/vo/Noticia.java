@@ -26,6 +26,16 @@ public class Noticia implements Parcelable{
     }
 
     /**
+     * Contructor de clase
+     * @param titulo tiulo noticia, titulo =! null
+     * @param descripcion Descripción de la noticia, descrpcion != null
+     */
+    public Noticia(String titulo, String descripcion) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+    }
+
+    /**
      * Leer y devolver una nueva ArrayList que contiene un tipo de objeto particular de la
      *  parcel que fue seleccionado
      * @param in

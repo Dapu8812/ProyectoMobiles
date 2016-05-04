@@ -19,13 +19,17 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
  * @author Juan Diego Buitrago
  * 28 de Abril de 2016
  */
-public class DetalleDependenciaFragment extends Fragment implements View.OnClickListener {
+public class DetalleDependenciaFragment extends Fragment {
 
     //Atributos que conforman los detalles de una dependencia
     private TextView nombreDependencia;
     private Dependencia dependencia;
     private TextView nombre;
 
+
+    /**
+     * Constructor de clase
+     */
     public DetalleDependenciaFragment() {
         // Required empty public constructor
     }
@@ -66,8 +70,4 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

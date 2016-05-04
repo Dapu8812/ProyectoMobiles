@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * @author Daniel Alvarado Arias
  * @author Leydi Giraldo Franco
  * @author Juan Diego Buitrago
- * 28 de Abril de 2016
+ *         28 de Abril de 2016
  */
 public class TelefonosFragment extends Fragment implements AdaptadorDependencia.OnClickAdaptadorDependencia {
 
@@ -39,7 +39,7 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     private OnDependenciaSeleccionadaListener listener;
 
     /**
-     *
+     *Constructor de clase
      */
     public TelefonosFragment() {
         // Required empty public constructor
@@ -47,16 +47,17 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
 
     /**
      * Metodos modificadores de las dependencias
+     *
      * @param dependencias Lista de las dependencias
      */
-    public void setDependencias(ArrayList<Dependencia> dependencias)
-    {
+    public void setDependencias(ArrayList<Dependencia> dependencias) {
         this.dependencias = dependencias;
     }
 
     /**
      * onAttach llamada una vez que el
      * fragmento se asocia con su actividad
+     *
      * @param context Esta es una clase abstracta
      *                cuya clase muestra la información global
      *                sobre un entorno de aplicación
@@ -80,10 +81,11 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     }
 
     /**
-     *  OncCreateView crea y devuelve la jerarquía vista asociada con el fragmento de los
-     *  numeros telefonicos
-     * @param inflater
-     * @param container
+     * OncCreateView crea y devuelve la jerarquía vista asociada con el fragmento de los
+     * numeros telefonicos
+     *
+     * @param inflater inflador de contenido
+     * @param container contexto
      * @param savedInstanceState guarda los datos sobre el estado de actividad,
      * @return
      */
@@ -96,6 +98,11 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
         return inflater.inflate(R.layout.fragment_telefonos, container, false);
     }
 
+
+    /**
+     * Metodo llamado al mostrar el fragmento
+     * @param savedInstanceState información de entrada
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -112,6 +119,7 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     /**
      * Metodo que hace el llamado a
      * la dependencia seleccionada
+     *
      * @param pos posicion
      */
     @Override
@@ -120,9 +128,10 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     }
 
     /**
-     * Metodo que se muestra la pelicula seleccionada
+     * interface que se usa para enviar la posición seleccionada
+     * a la actividad que maneja la lista de dependencias
      */
-    public   interface OnDependenciaSeleccionadaListener {
+    public interface OnDependenciaSeleccionadaListener {
         void onDependenciaSeleccionada(int position);
     }
 

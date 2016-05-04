@@ -20,6 +20,9 @@ import com.uniquindio.android.electiva.proyectomobiles.R;
 public class SugerenciasFragment extends Fragment {
 
 
+    /**
+     * Constructor de clase
+     */
     public SugerenciasFragment() {
         // Required empty public constructor
     }

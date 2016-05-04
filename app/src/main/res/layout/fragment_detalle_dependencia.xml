@@ -110,7 +110,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20px"
                 android:layout_toStartOf="@id/llamada"
-                android:text="367"
+                android:text="@string/tel_ext_dependencia"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -124,7 +124,7 @@
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="70px"
                 android:layout_toStartOf="@id/numeros_ext"
-                android:text="7494949"
+                android:text="@string/tel_dependencia"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -138,7 +138,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/numeros_usuario"
                 android:maxLines="3"
-                android:text="leydi giraldo"
+                android:text="@string/nombre_dependencia"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold"

@@ -16,8 +16,6 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
  */
 public class DetalleDependenciaActivity extends AppCompatActivity {
     /**
-     * /**
-     * /**
      * Metodo OnCreate
      * El cual se encarga de llamar a la vista de
      * detalles dependencia
@@ -38,9 +36,6 @@ public class DetalleDependenciaActivity extends AppCompatActivity {
                         getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia);
         Dependencia dependencia = (Dependencia)
                 getIntent().getExtras().get("Dependencia");
-
-
-
 
         //al hacer el llamado este muestra en la vista el  numero telefonico y el nombre de la persona
         detalleDependencia.mostrarDetalle(dependencia);

@@ -21,11 +21,13 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
  */
 public class DetalleNoticiaFragment extends Fragment implements View.OnClickListener{
 
-    //Titulo de la noticia
-    private TextView titulo;
-    private Noticia noticia;
-    private TextView descrpcion;
 
+    //Noticia
+    private Noticia noticia;
+
+    /**
+     * Constructor de clase
+     */
     public DetalleNoticiaFragment() {
         // Required empty public constructor
     }
@@ -54,17 +56,12 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
      */
     public void mostrarDetalle(Noticia noticia) {
         this.noticia = noticia;
-       // Log.d("TAG", "Element " + n.equals(null) + " clicked. ");
-        //el findViewById Encuentra  el atributo id del XML que fue procesada en onCreate
-        titulo = (TextView) getView().findViewById(R.id.titulo_detalle_noticia);
-        descrpcion = (TextView) getView().findViewById(R.id.descripcion_de_detalle_noticia);
-        titulo.setText(noticia.getTitulo());
-        descrpcion.setText(noticia.getDescripcion());
 
+        ((TextView) getView().findViewById(R.id.titulo_detalle_noticia)).setText(noticia.getTitulo());
 
+        ((TextView) getView().findViewById(R.id.descripcion_de_detalle_noticia)).setText(noticia.getDescripcion());
 
     }
-
     @Override
     public void onClick(View v) {
 

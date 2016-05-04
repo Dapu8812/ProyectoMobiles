@@ -18,7 +18,7 @@ public class Telefono implements Parcelable{
     String Dueño;
 
     /**
-     * Metodo constructor de los numeros telefonocios
+     * Metodo constructor de los numeros telefonicos
      * @param numero telefonico
      * @param extension extencion
      * @param dueño propietario
