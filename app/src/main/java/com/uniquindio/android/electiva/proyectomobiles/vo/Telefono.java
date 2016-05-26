@@ -9,9 +9,9 @@ import android.os.Parcelable;
  * @author Daniel Alvarado Arias
  * @author Leydi Giraldo Franco
  * @author Juan Diego Buitrago
- * 28 de Abril de 2016
+ *         28 de Abril de 2016
  */
-public class Telefono implements Parcelable{
+public class Telefono implements Parcelable {
     //Atributos de los numeros telefonicos con extension y propietario
     String numero;
     String extension;
@@ -19,9 +19,10 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo constructor de los numeros telefonicos
-     * @param numero telefonico
+     *
+     * @param numero    telefonico
      * @param extension extencion
-     * @param dueño propietario
+     * @param dueño     propietario
      */
     public Telefono(String numero, String extension, String dueño) {
 
@@ -31,8 +32,9 @@ public class Telefono implements Parcelable{
     }
 
     /**
-     *  Leer y devolver una nueva ArrayList que contiene un tipo de objeto particular de la
-     *  parcel que fue seleccionado
+     * Leer y devolver una nueva ArrayList que contiene un tipo de objeto particular de la
+     * parcel que fue seleccionado
+     *
      * @param in
      */
     protected Telefono(Parcel in) {
@@ -73,6 +75,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo get del numero telefonico
+     *
      * @return numero telefonico
      */
     public String getNumero() {
@@ -81,6 +84,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo get de la extension del numero telefonico
+     *
      * @return extension
      */
     public String getExtension() {
@@ -89,6 +93,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo modificador de la extension
+     *
      * @param extension
      */
 
@@ -98,6 +103,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo get del propietario de la linea telefonica
+     *
      * @return
      */
     public String getDueño() {
@@ -106,6 +112,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo modificador de la linea telefonica
+     *
      * @param dueño
      */
     public void setDueño(String dueño) {
@@ -114,6 +121,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Metodo modificador del nuemro telefonico
+     *
      * @param numero
      */
     public void setNumero(String numero) {
@@ -123,6 +131,7 @@ public class Telefono implements Parcelable{
     /**
      * Describir los tipos de objetos especiales contenidas
      * en la representación de este  parcelable
+     *
      * @return
      */
     @Override
@@ -132,6 +141,7 @@ public class Telefono implements Parcelable{
 
     /**
      * Acoplar este objeto en un paquete.
+     *
      * @param dest
      * @param flags
      */

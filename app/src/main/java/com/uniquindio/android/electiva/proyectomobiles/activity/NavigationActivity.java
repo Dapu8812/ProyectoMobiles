@@ -15,13 +15,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.uniquindio.android.electiva.proyectomobiles.R;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.DependenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleDependenciaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleNoticiaFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoConexionFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.NoticiasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.SugerenciasFragment;
-import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
 import com.uniquindio.android.electiva.proyectomobiles.util.Utilidades;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
@@ -35,9 +41,9 @@ import java.util.ArrayList;
  * @author Daniel Alvarado Arias
  * @author Leydi Giraldo Franco
  * @author Juan Diego Buitrago
- * 28 de Abril de 2016
+ *         28 de Abril de 2016
  */
-public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener, TelefonosFragment.OnDependenciaSeleccionadaListener{
+public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener, DependenciasFragment.OnDependenciaSeleccionadaListener {
 
     //Es un contenedor que permite interactuar entre vistas
     DrawerLayout drawerLayout;
@@ -53,15 +59,18 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     //Lista de los numeros telefonicos
     private ArrayList<Telefono> telefonos;
-  //  private NoticiasFragment listaNoticias;
+    //  private NoticiasFragment listaNoticias;
+
+    private CallbackManager callbackManager;
 
 
     /**
      * Remplaza el fragmento, y agrega
      * el fragmento anterior a la pila.
+     *
      * @param fragment
      */
-    private void remplazarFragmento(Fragment fragment , int t) {
+    private void remplazarFragmento(Fragment fragment, int t) {
 
 
         ////getSupportFragmentManager devuelve el FragmentManager para interactuar
@@ -70,8 +79,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
 
-        if(t == 0)
-        transaction.addToBackStack(null);
+        if (t == 0)
+            transaction.addToBackStack(null);
 
         transaction.commit();
     }
@@ -79,7 +88,6 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     /**
      * Metodo que redirige a la pagina
      * de la universidad del quindio.
-     *
      */
     public void URLiniciar() {
         // intent  es una descripción abstracta de una operación a realizar, y esta accion redirije a la pagina de la Uq.
@@ -89,7 +97,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         startActivity(Urlini);
     }
 
-    private boolean EstaConectado(Context context) {
+    private boolean estaConectado(Context context) {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context
                 .CONNECTIVITY_SERVICE);
@@ -105,6 +113,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
      * Metodo OnCreate
      * El cual se encarga de hacer funcionar la aplicacion
      * De la vista Navegacion.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -124,29 +133,31 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticias.add(new Noticia("noticia 3"));
         noticias.add(new Noticia("noticia 4"));
         //Lista de las dependenicas
-        dependencias=new ArrayList<>();
+        dependencias = new ArrayList<>();
         //Lista de los telefonos de cada dependencia
-        telefonos=new ArrayList<>();
-        telefonos.add(new Telefono("7494949","123","leydi giraldo"));
-        telefonos.add(new Telefono("7494949","123","juan Diego buitrago"));
-        dependencias.add(new Dependencia("dependencia 1",telefonos));
-        dependencias.add(new Dependencia("dependencia 2",telefonos));
-        dependencias.add(new Dependencia("dependencia 3",telefonos));
-        dependencias.add(new Dependencia("dependencia 4",telefonos));
-        dependencias.add(new Dependencia("dependencia 5",telefonos));
-        dependencias.add(new Dependencia("dependencia 6",telefonos));
-        dependencias.add(new Dependencia("dependencia 7",telefonos));
-        dependencias.add(new Dependencia("dependencia 8",telefonos));
-        dependencias.add(new Dependencia("dependencia 9",telefonos));
-        dependencias.add(new Dependencia("dependencia 10",telefonos));
-        dependencias.add(new Dependencia("dependencia 11",telefonos));
+        telefonos = new ArrayList<>();
+        telefonos.add(new Telefono("7494949", "123", "leydi giraldo"));
+        telefonos.add(new Telefono("7494949", "123", "juan Diego buitrago"));
+        dependencias.add(new Dependencia("dependencia 1", telefonos));
+        dependencias.add(new Dependencia("dependencia 2", telefonos));
+        dependencias.add(new Dependencia("dependencia 3", telefonos));
+        dependencias.add(new Dependencia("dependencia 4", telefonos));
+        dependencias.add(new Dependencia("dependencia 5", telefonos));
+        dependencias.add(new Dependencia("dependencia 6", telefonos));
+        dependencias.add(new Dependencia("dependencia 7", telefonos));
+        dependencias.add(new Dependencia("dependencia 8", telefonos));
+        dependencias.add(new Dependencia("dependencia 9", telefonos));
+        dependencias.add(new Dependencia("dependencia 10", telefonos));
+        dependencias.add(new Dependencia("dependencia 11", telefonos));
 
 
         //listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
         //listaNoticias.setPeliculas(noticias);
 
         //SetcontentView hace el llamado a la interfaz de navegacion
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_navigation);
+        Utilidades.getKeyHash(this);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu);
@@ -162,13 +173,13 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         final NoticiasFragment noticiasFragment = new NoticiasFragment();
         noticiasFragment.setNoticias(noticias);
 
-        final TelefonosFragment telefonosFragment = new TelefonosFragment();
-        telefonosFragment.setDependencias(dependencias);
+        final DependenciasFragment dependenciasFragment = new DependenciasFragment();
+        dependenciasFragment.setDependencias(dependencias);
 
-        final NoConexionFragment ConexionFragment= new NoConexionFragment();
+        final NoConexionFragment ConexionFragment = new NoConexionFragment();
 
 
-       // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
+        // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
 
         remplazarFragmento(noticiasFragment, 1);
 
@@ -177,18 +188,30 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                boolean conectado = EstaConectado(getBaseContext());
-                if (conectado == true) {
+                boolean conectado = estaConectado(getBaseContext());
+
                     switch (item.getItemId()) {
                         case R.id.noticias:
-                            remplazarFragmento(noticiasFragment, 0);
-                            break;
+                            if (conectado == true) {
+                                remplazarFragmento(noticiasFragment, 0);
+                                break;
+                            } else {
+                                remplazarFragmento(ConexionFragment, 0);
+                            }
                         case R.id.telefonos:
-                            remplazarFragmento(telefonosFragment, 0);
-                            break;
+                            if (conectado == true) {
+                                remplazarFragmento(dependenciasFragment, 0);
+                                break;
+                            } else {
+                                remplazarFragmento(ConexionFragment, 0);
+                            }
                         case R.id.sugerencias:
-                            remplazarFragmento(new SugerenciasFragment(), 0);
-                            break;
+                            if (conectado == true) {
+                                remplazarFragmento(new SugerenciasFragment(), 0);
+                                break;
+                            } else {
+                                remplazarFragmento(ConexionFragment, 0);
+                            }
                         case R.id.pagina:
                             URLiniciar();
                             break;
@@ -199,9 +222,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                             startActivity(intent);
                             break;
                     }
-                } else {
-                    remplazarFragmento(ConexionFragment, 0);
-                }
+
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;
@@ -209,10 +230,31 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
 
         });
+
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+// App code
+                    }
+
+                    @Override
+                    public void onCancel() {
+// App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+// App code
+                    }
+                });
+
     }
 
     /**
      * OnOptionsItemSelected se llama cada vez que se selecciona un elemento en el menú de opciones.
+     *
      * @param item
      * @return
      */
@@ -229,12 +271,13 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     /**
      * Metodo donde se muestra el fragmento
      * de los detalles de una noticia que fue seleccionada
+     *
      * @param position
      */
     @Override
     public void onNoticiaSeleccionada(int position) {
-    //    Log.d("TAG", "Element " + noticias.size() + " clicked. ");
-    // Log.d("TAG", "Element " + noticias.get(0).getTitulo() + " clicked. ");
+        //    Log.d("TAG", "Element " + noticias.size() + " clicked. ");
+        // Log.d("TAG", "Element " + noticias.get(0).getTitulo() + " clicked. ");
 
         //getSupportFragmentManager Devolver el FragmentManager para interactuar
         // con los fragmentos asociados a esta actividad en este caso el fragmento
@@ -256,18 +299,17 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     }
 
     /**
-     *  Metodo donde se muestra el fragmento
+     * Metodo donde se muestra el fragmento
      * de los detalles de la dependencia  que fue seleccionada
+     *
      * @param position
      */
     @Override
     public void onDependenciaSeleccionada(int position) {
-        //getSupportFragmentManager Devolver el FragmentManager para interactuar
-        // con los fragmentos asociados a esta actividad en este caso el fragmento
-        //de la dependencia seleccionada
+
         boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia) != null;
-        //Condiciones donde se muestra y se verifica si existe esa dependencia
+        //Condiciones donde se muestra y se verifica si existe esa noticia
         //y la muestra su detalle
         if (esFragmento) {
             ((DetalleDependenciaFragment)
@@ -277,7 +319,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                     DetalleDependenciaActivity.class);
             intent.putExtra("Dependencia", dependencias.get(position));
             startActivity(intent);
-        }
 
+        }
     }
+
 }

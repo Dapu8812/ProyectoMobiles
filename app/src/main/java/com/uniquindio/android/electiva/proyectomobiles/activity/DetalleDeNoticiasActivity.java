@@ -31,7 +31,7 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
        //Establece el contenido de los detalles de la noticia de una visión explícita
         setContentView(R.layout.activity_detalle_de_noticias);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        DetalleNoticiaFragment detalleDePelicula =
+        DetalleNoticiaFragment detalleDeNoticia =
                 (DetalleNoticiaFragment)
                         //getSupportFragmentManager devuelve el FragmentManager para interactuar
                         // con los fragmentos asociados a esta actividad en este caso el fragmento
@@ -40,6 +40,7 @@ public class DetalleDeNoticiasActivity extends AppCompatActivity {
         Noticia noticia = (Noticia)
                 getIntent().getExtras().get("Noticia");
         //al hacer el llamado este muestra en la vista el tituto y descripcion de la noticia.
-        detalleDePelicula.mostrarDetalle(noticia);
+        detalleDeNoticia.mostrarDetalle(noticia);
     }
+
 }

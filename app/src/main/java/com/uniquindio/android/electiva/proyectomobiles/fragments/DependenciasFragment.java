@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * @author Juan Diego Buitrago
  *         28 de Abril de 2016
  */
-public class TelefonosFragment extends Fragment implements AdaptadorDependencia.OnClickAdaptadorDependencia {
+public class DependenciasFragment extends Fragment implements AdaptadorDependencia.OnClickAdaptadorDependencia {
 
     //Atributos de la clase de los numeros telefonicos
     private AdaptadorDependencia adaptador;
@@ -41,7 +41,7 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
     /**
      *Constructor de clase
      */
-    public TelefonosFragment() {
+    public DependenciasFragment() {
         // Required empty public constructor
     }
 
@@ -95,7 +95,7 @@ public class TelefonosFragment extends Fragment implements AdaptadorDependencia.
         // Inflate the layout for this fragment
         //El inflate() es un método que se utiliza para construir y añadir las Views
         //los fragmentos de los numeros telefonicos.
-        return inflater.inflate(R.layout.fragment_telefonos, container, false);
+        return inflater.inflate(R.layout.fragment_dependencias, container, false);
     }
 
 

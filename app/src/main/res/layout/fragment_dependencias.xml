@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.TelefonosFragement">
+    tools:context=".fragments.DependenciasFragment">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,7 +48,7 @@
                 android:layout_alignParentRight="true"
                 android:maxWidth="100dp"
                 android:layout_centerVertical="true"
-                android:textAlignment="viewEnd" />
+                android:layout_alignParentEnd="true"/>
 
             <TextView
                 android:layout_width="wrap_content"

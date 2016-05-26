@@ -1,14 +1,13 @@
 package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uniquindio.android.electiva.proyectomobiles.R;
-import com.uniquindio.android.electiva.proyectomobiles.fragments.TelefonosFragment;
+import com.uniquindio.android.electiva.proyectomobiles.fragments.DependenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Dependencia;
 
 import java.util.ArrayList;
@@ -33,11 +32,11 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
      *Metodo Constructor del adaptador de la dependencias
      *
      * @param dependencias lista de las dependencias
-     * @param telefonosFragment los fragmentos de los telefonos de las dependencias
+     * @param dependenciasFragment los fragmentos de los telefonos de las dependencias
      */
-    public AdaptadorDependencia(ArrayList<Dependencia> dependencias, TelefonosFragment telefonosFragment) {
+    public AdaptadorDependencia(ArrayList<Dependencia> dependencias, DependenciasFragment dependenciasFragment) {
         this.dependencias = dependencias;
-        listener = (OnClickAdaptadorDependencia) telefonosFragment;
+        listener = (OnClickAdaptadorDependencia) dependenciasFragment;
 
     }
 
@@ -75,7 +74,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
 
         Dependencia n = dependencias.get(position);
         int i= dependencias.get(position).getTelefonos().size();
-
+       // Log.d("TAG", "Element " + dependencias.get(position).getTelefonos().get(0).getNumero() + " clicked. ");
         holder.binDependencia(n, i);
     }
 
@@ -137,7 +136,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
         public void onClick(View v) {
 
             listener.onClickPosition(getAdapterPosition());
-            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
+           // Log.d("TAG", "Element " + getAdapterPosition() + " clicked. ");
         }
     }
 }

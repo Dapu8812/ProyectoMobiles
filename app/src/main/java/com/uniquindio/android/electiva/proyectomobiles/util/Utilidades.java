@@ -2,10 +2,21 @@ package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.extras.Base64;
+
 
 /**
  * Proyecto final Moviles Uniquindio
@@ -64,5 +75,24 @@ public class Utilidades {
         Configuration config = new Configuration();
         config.locale = locale;
         context.getApplicationContext().getResources().updateConfiguration(config, null);
+    }
+
+    public static void getKeyHash(Context context) {
+        try {
+            PackageInfo info =
+                    context.getPackageManager().getPackageInfo(context.getPackageName(),
+                            PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String sign = Base64.encodeToString(md.digest(),
+                        Base64.DEFAULT);
+                Log.e("Mi clave HASH:", sign);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("prueba", "1 KeyHash Error: " + e.getMessage());
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("prueba", "2 KeyHash Error: " + e.getMessage());
+        }
     }
 }

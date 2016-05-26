@@ -102,7 +102,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
         listadoDeNoticias = (RecyclerView) getView().findViewById(R.id.RecViewnoticias);
         //getSimpleName () devuelve nombre de la clase que representa en este caso el fragmento de la noticia
         // tal cual como se define en el código fuente .
-        Log.v(NoticiasFragment.class.getSimpleName(), ""+noticias);
+       // Log.v(NoticiasFragment.class.getSimpleName(), ""+noticias);
         adaptador = new AdaptadorNoticia(noticias, this);
         listadoDeNoticias.setAdapter(adaptador);
         listadoDeNoticias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

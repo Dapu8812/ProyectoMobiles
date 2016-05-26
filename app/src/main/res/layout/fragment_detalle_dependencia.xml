@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30px"
         android:layout_marginTop="10px"
-        android:text="Area Audiovisual"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25sp" />
@@ -33,6 +32,7 @@
             android:maxWidth="400px"
             android:minWidth="400px"
             android:nestedScrollingEnabled="false" />
+
         <TextView
             android:id="@+id/telefono_usuario_text"
             android:layout_width="wrap_content"
@@ -43,10 +43,11 @@
 
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:layout_toEndOf="@id/nombre_usuario_text"
+            android:layout_toRightOf="@id/nombre_usuario_text"
             android:nestedScrollingEnabled="false"
             android:maxWidth="300px"
             android:minWidth="300px" />
+
         <TextView
             android:id="@+id/ext_usuario_text"
             android:layout_width="wrap_content"
@@ -56,98 +57,19 @@
             android:text="@string/extUsu"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:layout_toEndOf="@id/telefono_usuario_text"
+            android:layout_toRightOf="@id/telefono_usuario_text"
             android:maxWidth="100px"
             android:minWidth="100px"
             android:layout_marginLeft="10px" />
 
     </RelativeLayout>
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/numero_de_dependencia"
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecViewNumeros"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6px"
-        android:orientation="vertical"
-        android:padding="3px"
-        card_view:cardBackgroundColor="@android:color/transparent"
-        card_view:cardCornerRadius="4px"
-        card_view:cardElevation="10px">
+        android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10px">
-
-
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/confi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="20px"
-                android:background="@android:drawable/ic_menu_add"
-                android:backgroundTint="#000000"
-                android:textColor="@color/colorPrimaryDark" />
-
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/llamada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="false"
-                android:layout_marginLeft="20px"
-                android:layout_toStartOf="@id/confi"
-                android:background="@android:drawable/ic_menu_call"
-                android:backgroundTint="#000000"
-                android:textColor="@color/colorPrimaryDark" />
-
-            <TextView
-                android:id="@+id/numeros_ext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="false"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
-                android:layout_toStartOf="@id/llamada"
-                android:text="@string/tel_ext_dependencia"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/numeros_usuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="false"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10px"
-                android:layout_marginRight="70px"
-                android:layout_toStartOf="@id/numeros_ext"
-                android:text="@string/tel_dependencia"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/nombre_usuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/numeros_usuario"
-                android:maxLines="3"
-                android:text="@string/nombre_dependencia"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:maxWidth="400px" />
-
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>

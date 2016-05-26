@@ -73,7 +73,8 @@ public class Dependencia implements Parcelable{
      */
     public Dependencia(Parcel in) {
         nombre = in.readString();
-        telefonos = in.createTypedArrayList(Telefono.CREATOR);
+        telefonos = new ArrayList<>();
+        in.readTypedList(telefonos, Telefono.CREATOR);
     }
 
     /**
@@ -122,5 +123,6 @@ public class Dependencia implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
+        dest.writeTypedList(telefonos);
     }
 }

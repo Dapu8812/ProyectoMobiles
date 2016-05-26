@@ -7,10 +7,7 @@
     <string name="es_us">Cambio de Idioma ghjh</string>
     <string name="imagen_detalle_noticia">descripcion imagen noticia </string>
     <string name="descripcion_detalle_noticia">En el día de la tierra el programa institucional de ingeniería, Máquina de Ingenio, profundiza con expertos de diferentes campos del conocimiento adscritos a esta facultad, sobre los aspectos geocientíficos de la actividad sísmica reciente en Japón y Ecuador y su relación con las amenazas que subyacen al cinturón de fuego del pacífico, el diseño de estructuras sismoresistentes, el comportamiento tectónico en Colombia y el problema de la no actualización de la microzonificación sísmica de Armenia, entre otros temas.</string>
-    <string name="nombre_dependencia">Leydi Giraldo</string>
-    <string name="tel_dependencia">7 42 3423</string>
-    <string name="tel_ext_dependencia">423</string>
-
+    <string name="facebook_app_id">1033716246711195</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
