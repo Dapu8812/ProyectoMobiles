@@ -3,12 +3,11 @@ package com.uniquindio.android.electiva.proyectomobiles.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
  * @author Juan Diego Buitrago
  *         28 de Abril de 2016
  */
-public class DetalleDependenciaFragment extends Fragment implements View.OnClickListener, AdaptadorNumerosDependencia.OnClickAdaptadorNumerosDependencia {
+public class DetalleDependenciaFragment extends Fragment implements AdaptadorNumerosDependencia.OnClickAdaptadorNumerosDependencia {
 
     //Atributos que conforman los detalles de una dependencia
     private TextView nombreDependencia;
@@ -49,8 +48,14 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
         // Required empty public constructor
     }
 
-    public void setNumeros(ArrayList<Telefono> numeros) {
-        this.numeros = numeros;
+    public void setDependencia(Dependencia dependencia) {
+        this.dependencia = dependencia;
+    }
+
+    public void setNumeros(ArrayList<Telefono> telefonos) {
+        this.numeros = telefonos;
+        Log.v("DepA", "" + numeros.size());
+
     }
 
     @Override
@@ -101,9 +106,7 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
      */
     public void mostrarDetalle(Dependencia d) {
         this.dependencia = d;
-        this.numeros=d.getTelefonos();
-        ((TextView) getView().findViewById(R.id.nombre_dependencia_detalle)).setText(d.getNombre());
-      //  Log.v("DepA", "" + dependencia.getTelefonos().size());
+      //  ((TextView) getView().findViewById(R.id.nombre_dependencia_detalle)).setText(dependencia.getNombre());
 
     }
 
@@ -112,22 +115,14 @@ public class DetalleDependenciaFragment extends Fragment implements View.OnClick
         super.onActivityCreated(savedInstanceState);
 
         listadoNumeros = (RecyclerView) getView().findViewById(R.id.RecViewNumeros);
-        //Log.v(NoticiasFragment.class.getSimpleName(), "" + dependencias);
+       // Log.v("testDAA",""+numeros.size());
         adaptador = new AdaptadorNumerosDependencia(numeros, this);
         listadoNumeros.setAdapter(adaptador);
         listadoNumeros.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ((TextView) getView().findViewById(R.id.nombre_dependencia_detalle)).setText(dependencia.getNombre());
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+numeros));
-     //   Intent i = new Intent(android.content.Intent.ACTION_DIAL,
-            //    Uri.parse("tel:+0573017836771")); //
-        startActivity(intent);
-    }
 
     @Override
     public void onClickPosition(int pos) {

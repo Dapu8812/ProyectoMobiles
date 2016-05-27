@@ -1,6 +1,7 @@
 package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  * @author Juan Diego Buitrago
  * 28 de Abril de 2016
  */
-public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorNumerosDependencia.TelefonosViewHolder>{
+public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorNumerosDependencia.NumerosDependenciaViewHolder>{
 
     //Lista de las dependencias
     public ArrayList<Telefono> numeros;
@@ -37,6 +38,7 @@ public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorN
      */
     public AdaptadorNumerosDependencia(ArrayList<Telefono> numeros, DetalleDependenciaFragment detalleDependenciaFragment) {
         this.numeros = numeros;
+       // Log.v("testDAA",""+numeros.size());
         listener = (OnClickAdaptadorNumerosDependencia) detalleDependenciaFragment;
 
     }
@@ -53,50 +55,27 @@ public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorN
      * @return la dependencia vieHolder
      */
     @Override
-    public TelefonosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public NumerosDependenciaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.resumen_telefonos, parent, false);
-        TelefonosViewHolder telefonosVH = new TelefonosViewHolder(itemView);
+        NumerosDependenciaViewHolder telefonosVH = new NumerosDependenciaViewHolder(itemView);
         return telefonosVH;
     }
 
     @Override
-    public void onBindViewHolder(AdaptadorNumerosDependencia.TelefonosViewHolder holder, int position) {
+    public void onBindViewHolder(AdaptadorNumerosDependencia.NumerosDependenciaViewHolder holder, int position) {
         Telefono n = numeros.get(position);
         holder.binTelefonos(n);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+
+            return numeros.size();
     }
 
 
 
-
-    /**
-     * Este metodo actualiza el contenido de la vista
-     * con el elemento en la posición dada y también establece algunos campos
-     * para ser usados ​​por RecyclerView .
-     * @param holder adaptador
-     * @param position posicion
-     */
-
-
-    /**
-     * Metodo donde se cuenta
-     * el tamaño de los numeros telefonicos q
-     * que se encuentran en la lista de dependencias
-     * @return
-     */
-
-
-
-    /**
-     * Clase de De la dependencia viewHolder
-     * implementando la subclase ViewHolder
-     * el cual añade los datos
-     */
-    public static class TelefonosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class NumerosDependenciaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView nombre;
         private TextView numero;
@@ -110,7 +89,7 @@ public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorN
          * con sus repectivos atributos
          * @param itemView
          */
-        public TelefonosViewHolder(View itemView) {
+        public NumerosDependenciaViewHolder(View itemView) {
             super(itemView);
             //OnclickListener devolución de llamada que se invoca cuando se hace clic en una vista
             // dependencias..

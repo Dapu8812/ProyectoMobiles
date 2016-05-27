@@ -1,18 +1,22 @@
 package com.uniquindio.android.electiva.proyectomobiles.activity;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.facebook.CallbackManager;
@@ -43,7 +47,7 @@ import java.util.ArrayList;
  * @author Juan Diego Buitrago
  *         28 de Abril de 2016
  */
-public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener, DependenciasFragment.OnDependenciaSeleccionadaListener {
+public class NavigationActivity extends AppCompatActivity implements NoticiasFragment.OnNoticiaSeleccionadaListener, DependenciasFragment.OnDependenciaSeleccionadaListener, DetalleDependenciaFragment.onNumerosDependenciaSeleccionadaListener {
 
     //Es un contenedor que permite interactuar entre vistas
     DrawerLayout drawerLayout;
@@ -62,6 +66,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     //  private NoticiasFragment listaNoticias;
 
     private CallbackManager callbackManager;
+    private int posDep;
 
 
     /**
@@ -190,38 +195,38 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
             public boolean onNavigationItemSelected(MenuItem item) {
                 boolean conectado = estaConectado(getBaseContext());
 
-                    switch (item.getItemId()) {
-                        case R.id.noticias:
-                            if (conectado == true) {
-                                remplazarFragmento(noticiasFragment, 0);
-                                break;
-                            } else {
-                                remplazarFragmento(ConexionFragment, 0);
-                            }
-                        case R.id.telefonos:
-                            if (conectado == true) {
-                                remplazarFragmento(dependenciasFragment, 0);
-                                break;
-                            } else {
-                                remplazarFragmento(ConexionFragment, 0);
-                            }
-                        case R.id.sugerencias:
-                            if (conectado == true) {
-                                remplazarFragmento(new SugerenciasFragment(), 0);
-                                break;
-                            } else {
-                                remplazarFragmento(ConexionFragment, 0);
-                            }
-                        case R.id.pagina:
-                            URLiniciar();
+                switch (item.getItemId()) {
+                    case R.id.noticias:
+                        if (conectado == true) {
+                            remplazarFragmento(noticiasFragment, 0);
                             break;
-                        case R.id.idioma:
-                            Utilidades.cambiarIdioma(NavigationActivity.this);
-                            Intent intent = getIntent();
-                            finish();
-                            startActivity(intent);
+                        } else {
+                            remplazarFragmento(ConexionFragment, 0);
+                        }
+                    case R.id.telefonos:
+                        if (conectado == true) {
+                            remplazarFragmento(dependenciasFragment, 0);
                             break;
-                    }
+                        } else {
+                            remplazarFragmento(ConexionFragment, 0);
+                        }
+                    case R.id.sugerencias:
+                        if (conectado == true) {
+                            remplazarFragmento(new SugerenciasFragment(), 0);
+                            break;
+                        } else {
+                            remplazarFragmento(ConexionFragment, 0);
+                        }
+                    case R.id.pagina:
+                        URLiniciar();
+                        break;
+                    case R.id.idioma:
+                        Utilidades.cambiarIdioma(NavigationActivity.this);
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                        break;
+                }
 
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
@@ -307,7 +312,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     @Override
     public void onDependenciaSeleccionada(int position) {
 
-        boolean esFragmento =
+      /* boolean esFragmento =
                 getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia) != null;
         //Condiciones donde se muestra y se verifica si existe esa noticia
         //y la muestra su detalle
@@ -320,7 +325,32 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
             intent.putExtra("Dependencia", dependencias.get(position));
             startActivity(intent);
 
-        }
+        }*/
+        final DetalleDependenciaFragment detalleDependenciaFragment = new DetalleDependenciaFragment();
+        detalleDependenciaFragment.setNumeros(dependencias.get(position).getTelefonos());
+        detalleDependenciaFragment.setDependencia(dependencias.get(position));
+        remplazarFragmento(detalleDependenciaFragment, 0);
+        posDep = position;
+
     }
 
+    @Override
+    public void onNumerosDependenciaSeleccionada(int position) {
+
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dependencias.get(posDep).getTelefonos().get(position).getExtension() + dependencias.get(posDep).getTelefonos().get(position).getNumero()));
+        //   Intent i = new Intent(android.content.Intent.ACTION_DIAL,
+        //    Uri.parse("tel:+0573017836771")); //
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(intent);
+
+    }
 }

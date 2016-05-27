@@ -1,6 +1,7 @@
 package com.uniquindio.android.electiva.proyectomobiles.util;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +75,7 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
 
         Dependencia n = dependencias.get(position);
         int i= dependencias.get(position).getTelefonos().size();
-       // Log.d("TAG", "Element " + dependencias.get(position).getTelefonos().get(0).getNumero() + " clicked. ");
+        Log.d("TAG", "Element " + i + " clicked. ");
         holder.binDependencia(n, i);
     }
 
