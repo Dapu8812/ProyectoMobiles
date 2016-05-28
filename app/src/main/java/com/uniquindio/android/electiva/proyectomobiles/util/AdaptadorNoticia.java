@@ -39,6 +39,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
      */
     public AdaptadorNoticia(ArrayList<Noticia> noticias, NoticiasFragment noticiasFragment) {
         this.noticias = noticias;
+        notifyDataSetChanged();
         listener = (OnClickAdaptadorNoticia) noticiasFragment;
     }
 
@@ -72,6 +73,13 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.resumen_noticia, parent, false);
         NoticiaViewHolder NoticiaVH = new NoticiaViewHolder(itemView);
         return NoticiaVH;
+    }
+
+    public void intercambiar(ArrayList<Noticia> noticia) {
+        this.noticias.clear();
+        this.noticias.addAll(noticia);
+        notifyDataSetChanged();
+
     }
 
     /**

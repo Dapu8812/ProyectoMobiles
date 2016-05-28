@@ -16,7 +16,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.facebook.CallbackManager;
@@ -25,6 +24,10 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.uniquindio.android.electiva.proyectomobiles.R;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DependenciasFragment;
 import com.uniquindio.android.electiva.proyectomobiles.fragments.DetalleDependenciaFragment;
@@ -38,6 +41,7 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 import com.uniquindio.android.electiva.proyectomobiles.vo.Telefono;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Proyecto final Moviles Uniquindio
@@ -69,6 +73,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     private int posDep;
 
 
+
     /**
      * Remplaza el fragmento, y agrega
      * el fragmento anterior a la pila.
@@ -89,6 +94,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         transaction.commit();
     }
+
 
     /**
      * Metodo que redirige a la pagina
@@ -125,18 +131,19 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         /**
          *Vista para cambiar el lenguaje dependiendo de cual
          seleccion el usuario
          */
         Utilidades.obtenerLenguaje(this);
 
+        noticias= new ArrayList<Noticia>();
         //Arraylist de las noticias a mostrar en la vista
-        noticias = new ArrayList<>();
         noticias.add(new Noticia("noticia 1"));
         noticias.add(new Noticia("noticia 2"));
-        noticias.add(new Noticia("noticia 3"));
-        noticias.add(new Noticia("noticia 4"));
+       // noticias.add(new Noticia("noticia 3"));
+       // noticias.add(new Noticia("noticia 4"));
         //Lista de las dependenicas
         dependencias = new ArrayList<>();
         //Lista de los telefonos de cada dependencia
@@ -160,7 +167,38 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         //listaNoticias.setPeliculas(noticias);
 
         //SetcontentView hace el llamado a la interfaz de navegacion
+        Firebase.setAndroidContext(this);
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+
+
+        Firebase firebase = new Firebase("https://uniquindio.firebaseio.com/ListaNoticias");
+        firebase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                noticias.clear();
+                for (final DataSnapshot response : dataSnapshot.getChildren()) {
+                    Noticia not = response.getValue(Noticia.class);
+                    noticias.add(not);
+                   // Log.d("tamaño", "" + not.getTitulo());
+
+                }
+
+
+
+                // Log.d("tamaño",""+noticias.size());
+                Collections.shuffle(noticias);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+                System.out.println("error en bd" + firebaseError.getMessage());
+
+            }
+        });
+
         setContentView(R.layout.activity_navigation);
         Utilidades.getKeyHash(this);
 
@@ -177,6 +215,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         final NoticiasFragment noticiasFragment = new NoticiasFragment();
         noticiasFragment.setNoticias(noticias);
+       // noticiasFragment.adaptador.intercambiar(noticias);
+
 
         final DependenciasFragment dependenciasFragment = new DependenciasFragment();
         dependenciasFragment.setDependencias(dependencias);
@@ -187,6 +227,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
 
         remplazarFragmento(noticiasFragment, 1);
+
 
         // SetNavigationItemSelectedListener  es el oyente para el manejo de eventos de elementos de navegación
         //En el cual muestra la vista seleccionada por el usuario

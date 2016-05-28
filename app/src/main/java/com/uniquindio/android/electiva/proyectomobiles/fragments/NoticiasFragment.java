@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnClickAdaptadorNoticia {
 
 
-    private AdaptadorNoticia adaptador;
+    public AdaptadorNoticia adaptador;
 
     //Responsable de proporcionar vistas
     private RecyclerView listadoDeNoticias;
@@ -86,7 +86,10 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //El inflate() es un método que se utiliza para construir y añadir las Views
+
         //de la vista de las noticias
+
+
         return inflater.inflate(R.layout.fragment_noticias, container, false);
     }
 
@@ -98,16 +101,25 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+
         //getView crea una vista de forma manual o inflarlo a partir de un archivo de dise&ntilde;o XML
         listadoDeNoticias = (RecyclerView) getView().findViewById(R.id.RecViewnoticias);
         //getSimpleName () devuelve nombre de la clase que representa en este caso el fragmento de la noticia
         // tal cual como se define en el código fuente .
        // Log.v(NoticiasFragment.class.getSimpleName(), ""+noticias);
         adaptador = new AdaptadorNoticia(noticias, this);
+        adaptador. notifyDataSetChanged();
         listadoDeNoticias.setAdapter(adaptador);
         listadoDeNoticias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
     }
+
+    public void cargarListaNuevamente(ArrayList<Noticia> noticias){
+        adaptador.intercambiar(noticias);
+    }
+
+
 
     /**
      *El evento click, visualizar un div en coordenadas del ratón
@@ -122,6 +134,7 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     public void setNoticias(ArrayList<Noticia> noticia)
     {
         this.noticias = noticia;
+
     }
 
     /**

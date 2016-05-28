@@ -6,13 +6,21 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.res.Configuration;
+import android.text.StaticLayout;
 import android.util.Log;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.gson.Gson;
+import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 import cz.msebera.android.httpclient.extras.Base64;
@@ -76,6 +84,8 @@ public class Utilidades {
         config.locale = locale;
         context.getApplicationContext().getResources().updateConfiguration(config, null);
     }
+
+
 
     public static void getKeyHash(Context context) {
         try {

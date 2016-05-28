@@ -17,15 +17,16 @@ public class Noticia implements Parcelable{
     private String titulo;
     private String descripcion;
 
-    /**
-     * Metodo constructor de las noticias
-     * @param titulo noticia
-     */
+
+    public Noticia() {
+    }
+
     public Noticia(String titulo) {
         this.titulo = titulo;
     }
 
     /**
+
      * Contructor de clase
      * @param titulo tiulo noticia, titulo =! null
      * @param descripcion Descripción de la noticia, descrpcion != null

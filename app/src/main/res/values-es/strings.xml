@@ -14,4 +14,6 @@
     <string name="extUsu">Ext</string>
     <string name="Reportesugerencias">REPORTE DE SUGERENCIAS</string>
     <string name="enviarsugerencia">ENVIAR</string>
+    <string name="cargando_noticias">Cargando Noticias</string>
+    <string name="espere">Espere por favor</string>
 </resources>
