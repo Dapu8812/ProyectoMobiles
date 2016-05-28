@@ -1,4 +1,4 @@
-package com.uniquindio.android.electiva.proyectomobiles.fragments;
+﻿package com.uniquindio.android.electiva.proyectomobiles.fragments;
 
 
 import android.app.Activity;
@@ -48,16 +48,28 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
         // Required empty public constructor
     }
 
+	/**
+     *Metodo set de la dependencia
+     */
     public void setDependencia(Dependencia dependencia) {
         this.dependencia = dependencia;
     }
 
+	/**
+     *Metodo set de  los numeros telefonicos 
+	* el cual calcula la cantidad de telefonos
+     */
     public void setNumeros(ArrayList<Telefono> telefonos) {
         this.numeros = telefonos;
         Log.v("DepA", "" + numeros.size());
 
     }
 
+	/**
+     *Metodo onAttach
+	* 
+	* @param context 
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -123,7 +135,10 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
 
     }
 
-
+	/**
+     * Metodo donde se muestra los numeros que se encuentran en la dependencia
+     * @param pos  Ingresa una posicion
+     */
     @Override
     public void onClickPosition(int pos) {
         listener.onNumerosDependenciaSeleccionada(pos);

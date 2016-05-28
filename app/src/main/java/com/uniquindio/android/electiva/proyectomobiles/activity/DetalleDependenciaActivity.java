@@ -1,4 +1,4 @@
-package com.uniquindio.android.electiva.proyectomobiles.activity;
+﻿package com.uniquindio.android.electiva.proyectomobiles.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +22,11 @@ public class DetalleDependenciaActivity extends AppCompatActivity implements Det
 
 
 
-
+ 	/**
+     * Metodo cargar Numeros telefonicos
+     * El cual se encarga
+     * 
+	 */	
     public void cargarTelefonos (ArrayList<Telefono> telefono){
         {
 

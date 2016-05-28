@@ -1,4 +1,4 @@
-package com.uniquindio.android.electiva.proyectomobiles.fragments;
+﻿package com.uniquindio.android.electiva.proyectomobiles.fragments;
 
 
 import android.content.Intent;
@@ -58,6 +58,12 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         //detalles de la noticia.
         return inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
     }
+
+
+/*
+     *  Metodo onActivityCreated
+     * Se llama cuando se ha creado la actividad del fragmento y la jerarquía de vistas de este fragmento instancia 
+     */
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
