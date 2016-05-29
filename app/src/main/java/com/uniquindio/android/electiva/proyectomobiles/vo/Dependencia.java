@@ -34,6 +34,9 @@ public class Dependencia implements Parcelable{
         this.telefonos = telefonos;
     }
 
+    public Dependencia() {
+    }
+
     /**
      * Metodo get del numero tefonico
      * @return telefono

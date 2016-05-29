@@ -31,6 +31,9 @@ public class Telefono implements Parcelable {
         this.Dueño = dueño;
     }
 
+    public Telefono() {
+    }
+
     /**
      * Leer y devolver una nueva ArrayList que contiene un tipo de objeto particular de la
      * parcel que fue seleccionado

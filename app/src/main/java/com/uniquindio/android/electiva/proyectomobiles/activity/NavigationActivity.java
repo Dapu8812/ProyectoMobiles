@@ -152,15 +152,15 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         telefonos.add(new Telefono("7494949", "123", "juan Diego buitrago"));
         dependencias.add(new Dependencia("dependencia 1", telefonos));
         dependencias.add(new Dependencia("dependencia 2", telefonos));
-        dependencias.add(new Dependencia("dependencia 3", telefonos));
-        dependencias.add(new Dependencia("dependencia 4", telefonos));
-        dependencias.add(new Dependencia("dependencia 5", telefonos));
-        dependencias.add(new Dependencia("dependencia 6", telefonos));
-        dependencias.add(new Dependencia("dependencia 7", telefonos));
-        dependencias.add(new Dependencia("dependencia 8", telefonos));
-        dependencias.add(new Dependencia("dependencia 9", telefonos));
-        dependencias.add(new Dependencia("dependencia 10", telefonos));
-        dependencias.add(new Dependencia("dependencia 11", telefonos));
+       // dependencias.add(new Dependencia("dependencia 3", telefonos));
+       // dependencias.add(new Dependencia("dependencia 4", telefonos));
+       // dependencias.add(new Dependencia("dependencia 5", telefonos));
+       // dependencias.add(new Dependencia("dependencia 6", telefonos));
+       // dependencias.add(new Dependencia("dependencia 7", telefonos));
+       // dependencias.add(new Dependencia("dependencia 8", telefonos));
+       // dependencias.add(new Dependencia("dependencia 9", telefonos));
+       // dependencias.add(new Dependencia("dependencia 10", telefonos));
+       // dependencias.add(new Dependencia("dependencia 11", telefonos));
 
 
         //listaNoticias = (NoticiasFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_noticias);
@@ -173,6 +173,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
 
         Firebase firebase = new Firebase("https://uniquindio.firebaseio.com/ListaNoticias");
+        Firebase firebase1 = new Firebase("https://uniquindio.firebaseio.com/ListaDependencias");
+        Firebase firebase2 = new Firebase("https://uniquindio.firebaseio.com/ListaTelefonos");
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -198,6 +200,62 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
             }
         });
+
+        firebase2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                telefonos.clear();
+                for (final DataSnapshot response : dataSnapshot.getChildren()) {
+                    Telefono tel = response.getValue(Telefono.class);
+                    telefonos.add(tel);
+                    // Log.d("tamaño", "" + not.getTitulo());
+
+                }
+
+
+
+                // Log.d("tamaño",""+noticias.size());
+                Collections.shuffle(telefonos);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+                System.out.println("error en bd" + firebaseError.getMessage());
+
+            }
+        });
+
+
+        firebase1.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dependencias.clear();
+                for (final DataSnapshot response : dataSnapshot.getChildren()) {
+                    Dependencia dependencia = response.getValue(Dependencia.class);
+                    dependencia.setTelefonos(telefonos);
+                    dependencias.add(dependencia);
+                    // Log.d("tamaño", "" + not.getTitulo());
+
+                }
+
+
+
+                // Log.d("tamaño",""+noticias.size());
+                Collections.shuffle(dependencias);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+                System.out.println("error en bd" + firebaseError.getMessage());
+
+            }
+        });
+
 
         setContentView(R.layout.activity_navigation);
         Utilidades.getKeyHash(this);

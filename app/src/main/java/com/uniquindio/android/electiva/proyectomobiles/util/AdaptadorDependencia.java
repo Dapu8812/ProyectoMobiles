@@ -74,9 +74,14 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
     public void onBindViewHolder(AdaptadorDependencia.DependenciaViewHolder holder, int position) {
 
         Dependencia n = dependencias.get(position);
-        int i= dependencias.get(position).getTelefonos().size();
-        Log.d("TAG", "Element " + i + " clicked. ");
-        holder.binDependencia(n, i);
+        if(dependencias.get(position).getTelefonos()==null){
+            holder.binDependencia(n, 2);
+        }else  {
+            int i= dependencias.get(position).getTelefonos().size();
+            Log.d("TAG", "Element " + i + " clicked. ");
+            holder.binDependencia(n, i);
+        }
+
     }
 
     /**
