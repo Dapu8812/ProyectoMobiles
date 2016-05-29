@@ -310,12 +310,10 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         noticiasFragment.setNoticias(noticias);
        // noticiasFragment.adaptador.intercambiar(noticias);
 
-
         final DependenciasFragment dependenciasFragment = new DependenciasFragment();
         dependenciasFragment.setDependencias(dependencias);
 
         final NoConexionFragment ConexionFragment = new NoConexionFragment();
-
 
         // Log.v(NavigationActivity.class.getSimpleName(), "" + noticias);
 

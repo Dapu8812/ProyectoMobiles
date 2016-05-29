@@ -46,8 +46,10 @@ public class DetalleDependenciaActivity extends AppCompatActivity implements Det
       // getSupportActionBar().setDisplayShowTitleEnabled(false);
         setContentView(R.layout.activity_detalle_dependencia);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         DetalleDependenciaFragment detalleDependencia =
                 (DetalleDependenciaFragment)
+
                         //getSupportFragmentManager devuelve el FragmentManager para interactuar
                         // con los fragmentos asociados a esta actividad en este caso el fragmento
                         //de los detalles de las dependecias
@@ -57,7 +59,7 @@ public class DetalleDependenciaActivity extends AppCompatActivity implements Det
                 getIntent().getExtras().get("Dependencia");
 
 
-        //al hacer el llamado este muestra en la vista el  numero telefonico y el nombre de la persona
+        //al hacer el  llamado este muestra en la vista el  numero telefonico y el nombre de la persona
         detalleDependencia.mostrarDetalle(dependencia);
 
 

@@ -19,6 +19,13 @@ public class NoConexionFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     *    Llamados a tener el fragmento de una instancia su vista de la interfaz de usuario
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

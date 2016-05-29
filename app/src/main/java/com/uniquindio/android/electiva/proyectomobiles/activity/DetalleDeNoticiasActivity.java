@@ -19,7 +19,7 @@ import com.uniquindio.android.electiva.proyectomobiles.vo.Noticia;
 public class DetalleDeNoticiasActivity extends AppCompatActivity {
 
     /**
-     * /**
+     *
      * Metodo OnCreate
      * El cual se encarga de llamar a la vista de
      * detalles de detalle de noticias

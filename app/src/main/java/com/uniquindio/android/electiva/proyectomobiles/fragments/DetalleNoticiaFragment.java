@@ -30,7 +30,9 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
     //Noticia
     private Noticia noticia;
+    // imagen facebook
     private ImageButton btn_fb;
+    //imagen Twitter
     private ImageButton btn_tw;
     private ShareDialog shareDialog;
 

@@ -87,7 +87,6 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
 
     }
 
-
     /**
      * Metodo que hace el Llamado fragmento
      * de los detalles de las dependencias
@@ -121,6 +120,10 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
 
     }
 
+    /**
+     * Se llama cuando se ha creado la actividad del fragmento y la jerarquía de vistas de este fragmento instancia .
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -135,7 +138,8 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
     }
 
 	/**
-     * Metodo donde se muestra los numeros que se encuentran en la dependencia
+     * Metodo donde se muestra
+     * los numeros que se encuentran en la dependencia
      * @param pos  Ingresa una posicion
      */
     @Override

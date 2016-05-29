@@ -118,8 +118,7 @@ public class DependenciasFragment extends Fragment implements AdaptadorDependenc
 
     /**
      * Metodo que hace el llamado a
-     * la dependencia seleccionada
-     *
+     * la dependencia seleccionad
      * @param pos posicion
      */
     @Override

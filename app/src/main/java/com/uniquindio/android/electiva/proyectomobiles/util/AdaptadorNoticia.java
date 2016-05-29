@@ -62,7 +62,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
     /**
      * Este metodo infla la vista del resumen de
      * las de la noticia
-     * @param parent en la que se añadirá la nueva vista después de que se une a una posición adaptador.
+     * @param parent en la que se añadira la nueva vista después de que se une a una posición adaptador.
      * @param viewType el tipo de la nueva vista
      *
      * @return la notivia viewHolder
@@ -98,7 +98,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.Noti
     /**
      *Este metodo devuelve el número total de noticias
      * en el conjunto de datos de retención por el adaptador.
-     * @return
+     * @return tamaño
      */
     @Override
     public int getItemCount() {
