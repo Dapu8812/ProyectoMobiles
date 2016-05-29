@@ -40,7 +40,8 @@ public class SugerenciasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //El inflate() es un método que se utiliza para construir
+        // y añadir las Views
         //la vista Sugerencias.
         return inflater.inflate(R.layout.fragment_sugerencias, container, false);
     }

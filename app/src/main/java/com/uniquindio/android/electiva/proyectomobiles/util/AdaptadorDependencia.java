@@ -114,9 +114,11 @@ public class AdaptadorDependencia extends RecyclerView.Adapter<AdaptadorDependen
          */
         public DependenciaViewHolder(View itemView) {
             super(itemView);
+
             //OnclickListener devolución de llamada que se invoca cuando se hace clic en una vista
             // dependencias..
             itemView.setOnClickListener(this);
+
             //el findViewById Encuentra  el atributo id del XML que fue procesada en onCreate
             nombreDependencia = (TextView) itemView.findViewById(R.id.nombre_dependencia);
             numeroContactos= (TextView) itemView.findViewById(R.id.Cantidad_numeros);

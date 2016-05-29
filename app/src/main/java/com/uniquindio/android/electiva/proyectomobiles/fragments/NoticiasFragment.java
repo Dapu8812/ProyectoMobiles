@@ -138,7 +138,8 @@ public class NoticiasFragment extends Fragment implements AdaptadorNoticia.OnCli
     }
 
     /**
-     * Interfaz que mmuestra la noticia selecionada
+     * Interfaz que mmuestra la
+     * noticia selecionada
      */
     public   interface OnNoticiaSeleccionadaListener {
         void onNoticiaSeleccionada(int position);

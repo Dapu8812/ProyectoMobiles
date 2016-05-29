@@ -67,6 +67,10 @@ public class AdaptadorNumerosDependencia extends RecyclerView.Adapter<AdaptadorN
         holder.binTelefonos(n);
     }
 
+    /**
+     * Cuenta la cantidad de numeros que hay en la lista
+     * @return
+     */
     @Override
     public int getItemCount() {
 
