@@ -69,7 +69,10 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     private ArrayList<Telefono> telefonos;
     //  private NoticiasFragment listaNoticias;
 
+    //El CallbackManager gestiona las devoluciones de llamada en el FacebookSdk de un método
     private CallbackManager callbackManager;
+
+    // posicion de una dependencia
     private int posDep;
 
 
@@ -89,6 +92,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
 
+        //Añadir esta transacción a la pila de nuevo
         if (t == 0)
             transaction.addToBackStack(null);
 
@@ -108,6 +112,11 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
         startActivity(Urlini);
     }
 
+    /**
+     * Meotodo que verifica si la aplicacion se encuentra conectada
+     * @param context
+     * @return falso o verdadero dependiendo si se encuentra conectado o no
+     */
     private boolean estaConectado(Context context) {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context
@@ -168,6 +177,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         //SetcontentView hace el llamado a la interfaz de navegacion
         Firebase.setAndroidContext(this);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
 
 
@@ -182,10 +192,9 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                 for (final DataSnapshot response : dataSnapshot.getChildren()) {
                     Noticia not = response.getValue(Noticia.class);
                     noticias.add(not);
-                   // Log.d("tamaño", "" + not.getTitulo());
+                    // Log.d("tamaño", "" + not.getTitulo());
 
                 }
-
 
 
                 // Log.d("tamaño",""+noticias.size());
@@ -193,6 +202,12 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
             }
 
+            /**
+             *
+             *Una tarea puede ser cancelada en cualquier momento mediante la invocación de cance
+             * @param firebaseError Las instancias de FirebaseError se pasan a las devoluciones de llamada cuando una operación ha fallado .
+             *                      Contienen una descripción del error específico que se produjo .
+             */
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -201,7 +216,14 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
             }
         });
 
+        // lee todo el contenido de un nodo de base de datos
         firebase2.addValueEventListener(new ValueEventListener() {
+
+            /**
+             * OnDataChange controlador de eventos para tomar acciones específicas
+             * cuando un campo en el registro actual se ha editado
+             * @param dataSnapshot DataSnapshot contiene datos de una base de datos de ubicación Firebase
+             */
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 telefonos.clear();
@@ -209,16 +231,18 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
                     Telefono tel = response.getValue(Telefono.class);
                     telefonos.add(tel);
                     // Log.d("tamaño", "" + not.getTitulo());
-
                 }
-
-
-
-                // Log.d("tamaño",""+noticias.size());
+               // Log.d("tamaño",""+noticias.size());
                 Collections.shuffle(telefonos);
 
             }
 
+            /**
+             *
+             *Una tarea puede ser cancelada en cualquier momento mediante la invocación de cance
+             * @param firebaseError Las instancias de FirebaseError se pasan a las devoluciones de llamada cuando una operación ha fallado .
+             *                      Contienen una descripción del error específico que se produjo .
+             */
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -230,6 +254,11 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         firebase1.addValueEventListener(new ValueEventListener() {
 
+            /**
+             * OnDataChange controlador de eventos para tomar acciones específicas
+             * cuando un campo en el registro actual se ha editado
+             * @param dataSnapshot DataSnapshot contiene datos de una base de datos de ubicación Firebase
+             */
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dependencias.clear();
@@ -248,6 +277,12 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
             }
 
+            /**
+             *
+             *Una tarea puede ser cancelada en cualquier momento mediante la invocación de cance
+             * @param firebaseError Las instancias de FirebaseError se pasan a las devoluciones de llamada cuando una operación ha fallado .
+             *                      Contienen una descripción del error específico que se produjo .
+             */
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -335,6 +370,8 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
         });
 
+        //      El CallbackManager gestiona las devoluciones de llamada en el
+        // FacebookSdk desde el método del Fragmento onActivityResult ( )
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -433,6 +470,10 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
 
     }
 
+    /**
+     *
+     * @param position
+     */
     @Override
     public void onNumerosDependenciaSeleccionada(int position) {
 
