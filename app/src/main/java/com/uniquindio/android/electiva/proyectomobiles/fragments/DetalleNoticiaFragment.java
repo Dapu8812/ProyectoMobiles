@@ -1,14 +1,12 @@
-﻿package com.uniquindio.android.electiva.proyectomobiles.fragments;
+package com.uniquindio.android.electiva.proyectomobiles.fragments;
 
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -56,7 +54,7 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //El inflate() es un método que se utiliza para construir y añadir las Views de los fragmentos d
+        //El inflate() es un m?todo que se utiliza para construir y a?adir las Views de los fragmentos d
         //detalles de la noticia.
         return inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
     }
@@ -64,7 +62,7 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
 /*
      *  Metodo onActivityCreated
-     * Se llama cuando se ha creado la actividad del fragmento y la jerarquía de vistas de este fragmento instancia 
+     * Se llama cuando se ha creado la actividad del fragmento y la jerarqu?a de vistas de este fragmento instancia 
      */
 
     @Override
@@ -100,7 +98,7 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
 
             // LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends"));
-            if (ShareDialog.canShow(ShareLinkContent.class)) {
+                      if (ShareDialog.canShow(ShareLinkContent.class)) {
                 ShareLinkContent content = new ShareLinkContent.Builder()
                         .setContentTitle(noticia.getTitulo())
                         .setContentUrl(Uri.parse("https://www.uniquindio.edu.co"))

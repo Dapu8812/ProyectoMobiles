@@ -1,4 +1,4 @@
-﻿package com.uniquindio.android.electiva.proyectomobiles.fragments;
+package com.uniquindio.android.electiva.proyectomobiles.fragments;
 
 
 import android.app.Activity;
@@ -102,7 +102,7 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //El inflate() es un método que se utiliza para construir y añadir las Views
+        //El inflate() es un m?todo que se utiliza para construir y a?adir las Views
         //El detalle de las dependencias.
         return inflater.inflate(R.layout.fragment_detalle_dependencia, container, false);
     }
@@ -121,7 +121,7 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
     }
 
     /**
-     * Se llama cuando se ha creado la actividad del fragmento y la jerarquía de vistas de este fragmento instancia .
+     * Se llama cuando se ha creado la actividad del fragmento y la jerarqu?a de vistas de este fragmento instancia .
      * @param savedInstanceState
      */
     @Override
@@ -148,7 +148,7 @@ public class DetalleDependenciaFragment extends Fragment implements AdaptadorNum
     }
 
     /**
-     * interface que se usa para enviar la posición seleccionada
+     * interface que se usa para enviar la posici?n seleccionada
      * a la actividad que maneja la lista de dependencias
      */
     public interface onNumerosDependenciaSeleccionadaListener {

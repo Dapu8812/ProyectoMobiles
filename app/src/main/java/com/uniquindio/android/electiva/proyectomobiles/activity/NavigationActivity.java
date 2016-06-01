@@ -24,6 +24,8 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+
+
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -446,20 +448,7 @@ public class NavigationActivity extends AppCompatActivity implements NoticiasFra
     @Override
     public void onDependenciaSeleccionada(int position) {
 
-      /* boolean esFragmento =
-                getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia) != null;
-        //Condiciones donde se muestra y se verifica si existe esa noticia
-        //y la muestra su detalle
-        if (esFragmento) {
-            ((DetalleDependenciaFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragmento_detalle_dependencia)).mostrarDetalle(dependencias.get(position));
-        } else {
-            Intent intent = new Intent(NavigationActivity.this,
-                    DetalleDependenciaActivity.class);
-            intent.putExtra("Dependencia", dependencias.get(position));
-            startActivity(intent);
 
-        }*/
         final DetalleDependenciaFragment detalleDependenciaFragment = new DetalleDependenciaFragment();
         detalleDependenciaFragment.setNumeros(dependencias.get(position).getTelefonos());
         detalleDependenciaFragment.setDependencia(dependencias.get(position));
